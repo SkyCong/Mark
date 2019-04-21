@@ -20,7 +20,13 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      "pages/display/class/class",
+
+      'pages/index/index',
+      'pages/display/search/search',
+      "pages/display/daycard/daycard",
+      "pages/display/hotmovie/hotmovie"
+
     ],
     window: {
       navigationBarTitleText: '发现',

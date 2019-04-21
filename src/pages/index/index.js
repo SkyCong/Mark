@@ -5,15 +5,21 @@ import { AtTabBar } from 'taro-ui'
 
 // import { Search } from '../search'
 
-import { Discovery } from '../discovery/discovery'
-import { Movie } from '../movie/movie'
-import { Setting } from '../setting/setting'
+import { Discovery } from './discovery/discovery'
+import { Movie } from './movie/movie'
+import { Setting } from './setting/setting'
 
 //json-server ./src/mock/list.json --watch --port 9000
 import './index.scss'
 
 
 class Index extends Component {
+
+  config = {
+    window: {
+      navigationBarTitleText: '发现'
+    }
+  }
 
   state = {
     current : 0
@@ -42,7 +48,6 @@ class Index extends Component {
         { this.state.current === 0 && <Discovery />}
         { this.state.current === 1 && <Movie />}
         { this.state.current === 2 && <Setting />}
-
         <AtTabBar
           fixed
           fontSize={11}
@@ -64,5 +69,3 @@ class Index extends Component {
 
 export default Index
 
-
-//{[<Discovery/>,<Movie/>,<Setting/>]}

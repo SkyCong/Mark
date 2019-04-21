@@ -1,8 +1,7 @@
-
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Swiper, SwiperItem} from '@tarojs/components'
-import http from '../../utils/fetch'
+import http from '../../../utils/fetch'
 
 
 import './discovery.scss'
@@ -20,7 +19,7 @@ class Discovery extends Component {
 
   async fetchData(){
     let result = await http({
-      url: 'http://api.markapp.cn/v160/singles/banner?',
+      url: 'http://api.markapp.cn/v160/singles/banner',
       method : 'GET'
     })
     // let resultList = await http({
@@ -40,18 +39,24 @@ class Discovery extends Component {
     })
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data
+      listData : resultList.data.slice(0,10)
     })
 
   }
 
   render () {
-
+    let myDate = new Date();
     return (
-      <View className='index'>
-
-        <View className='search'>
-          <Text>搜索</Text>
+      <View id='wrap'>
+        <View className='search'onClick={ () => {
+          Taro.navigateTo({
+            url: '/pages/display/search/search'
+          })
+        }}> 
+          <View className='search_text'>    
+            <image src={require('../../../assets/search_empty_icon.png')} alt='search' mode='widthFix' />
+            搜索                   
+          </View>
         </View>
 
         
@@ -73,17 +78,28 @@ class Discovery extends Component {
           }
         </Swiper>
      
-
         <View className='nav'>
-          <View className='nav_list'>
+          <View className='nav_list' onClick={ () => {
+            Taro.navigateTo({
+              url: '/pages/display/class/class'
+            })
+          }}> 
             <View className='nav_icon'></View>
             <text>分类查找</text>
           </View>
-          <View className='nav_list'>
-            <View className='nav_icon'>20</View>
+          <View className='nav_list' onClick={ () => {
+            Taro.navigateTo({
+              url: '/pages/display/daycard/daycard'
+            })
+          }}> 
+            <View className='nav_icon'>{myDate.getDate()}</View>
             <text>每日电影卡片</text>
           </View>
-          <View className='nav_list'>
+          <View className='nav_list' onClick={ () => {
+            Taro.navigateTo({
+              url: '/pages/display/hotmovie/hotmovie'
+            })
+          }}> 
             <View className='nav_icon'></View>
             <text>影院热映</text>
           </View>
@@ -98,7 +114,7 @@ class Discovery extends Component {
                   <image src={value.img_url} alt={value.name} mode='widthFix' />
                   <View className='name'>{value.name}</View>
                   <View className='like'>
-                    <image src={require('../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' />
+                    <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' lazy-load='true' />
                     {value.likes}
                   </View>         
                 </View>
@@ -106,10 +122,6 @@ class Discovery extends Component {
             })
           }
         </View>
-
-
-
-
 
       </View>
     )

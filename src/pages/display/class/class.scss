@@ -1,0 +1,45 @@
+#class_wrap{
+  background: #ebebeb;
+  padding: 12.5px;
+  .navList{
+    margin: 25px 12.5px;
+    overflow: hidden;
+    background: #f4f4f4;
+    border-left: 0.5rpx solid #d2d2d2;
+    border-top: 0.5rpx solid #d2d2d2;
+    zoom: 1;
+
+    font-size: 26px;
+    .navListFrist{
+      float: left;
+      width: 25%;
+      height: 169px;
+      border-right: 0.5rpx solid #d2d2d2;
+      border-bottom: 0.5rpx solid #d2d2d2;
+      text-align: center;
+      box-sizing: border-box;
+      image{
+        display: block;
+        margin: 30px auto 20px;
+        width: 40%;
+        height: 40%;
+      }
+      text{
+        color: #6f93a2;
+      }
+    }
+    .navListItem{
+      float: left;
+      color: #141c22;
+      box-sizing: border-box;
+      width: 25%;
+      height: 84px;
+      text-align: center;
+      line-height: 84px;
+      border-right: 0.5rpx solid #d2d2d2;
+      border-bottom: 0.5rpx solid #d2d2d2;
+    }
+  }
+
+
+}
