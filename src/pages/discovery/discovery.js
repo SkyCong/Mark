@@ -65,8 +65,8 @@ class Discovery extends Component {
           {
           this.state.bannerData.map((value) => {
               return (
-                <SwiperItem key={value.id} className="aaa">
-                  <image src={value.img_url} alt={value.name} mode='widthFix'/>
+                <SwiperItem key={value.id} >
+                  <image src={value.img_url} alt={value.name} mode='widthFix' className='bbb'/>
                 </SwiperItem>
               )
             })
@@ -95,7 +95,12 @@ class Discovery extends Component {
               return (
                 <View key={value.id} className="findList">
                   <View className='hr'></View>
-                  <image src={value.img_url} alt={value.name} mode='widthFix'/>
+                  <image src={value.img_url} alt={value.name} mode='widthFix' />
+                  <View className='name'>{value.name}</View>
+                  <View className='like'>
+                    <image src={require('../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' />
+                    {value.likes}
+                  </View>         
                 </View>
               )
             })
