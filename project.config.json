@@ -2,13 +2,14 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "Mark",
 	"description": "Mark xcx text",
-	"appid": "touristappid",
+	"appid": "wx3e0fb16791d7b427",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"condition": {}

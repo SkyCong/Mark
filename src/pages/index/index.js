@@ -51,7 +51,7 @@ class Index extends Component {
         <AtTabBar
           fixed
           fontSize={11}
-          iconSize={18}
+          iconSize={22}
           selectedColor={'#000'}
           color={'#496069'}
           tabList={[

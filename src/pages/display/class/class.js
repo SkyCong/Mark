@@ -59,7 +59,13 @@ export default class Setting extends Taro.Component {
                 {
                   value.cat.map(values => {
                     return (
-                      <View key={values.id} className='navListItem'>{values.name}</View>         
+                      <View key={values.id} className='navListItem'onClick={ () => {
+                        Taro.navigateTo({
+                          url: '/pages/display/class_display/classDisplay'
+                        })
+                      }}> 
+                        {values.name}
+                      </View>         
                     )
                   })
                 }
