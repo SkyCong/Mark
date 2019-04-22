@@ -27,34 +27,37 @@ export default class HotMovie extends Taro.Component {
     this.fetchData()
   }
 
-  async fetchData(){
-    let resultIng = await http({
-      url: 'http://api.markapp.cn/v160/movies/intheaters',
-      method : 'GET'
-    })
-    // let resultAfter = await http({
-    //   url: 'https://api.douban.com/v2/movie/coming_soon?',
-    //   data: {
-    //     count: 10,
-    //     start: 0
-    //   },
-    //   method : 'GET'
-    // })
-    this.setState({
-      ingData : resultIng.data.subjects.slice(0,20)
-    })
+  // async fetchData(){
+  //   let resultIng = await http({
+  //     url: 'http://api.markapp.cn/v160/movies/intheaters',
+  //     method : 'GET'
+  //   })
+  //   let resultAfter = await http({
+  //     url: 'https://api.douban.com/v2/movie/coming_soon',
+  //     data: {
+  //       apikey: '0b2bdeda43b5688921839c8ecb20399b',
+  //       start: 0,
+  //     },
+  //     header:{
+  //       "Content-Type":"json"
+  //     },
+  //     method : 'GET'
+  //   })    
 
-  }
+  //   this.setState({
+  //     ingData : resultIng.data.subjects,
+  //     afterData: resultAfter.data.subjects
+  //   })
+
+  // }
 
   handleClick (value) {
     this.setState({
       current: value
     })
   }
-
-
+  
   render () {
-    console.log(this.state.ingData)
     return (
       <View id='hot_wrap'>
         <AtTabBar
@@ -69,23 +72,13 @@ export default class HotMovie extends Taro.Component {
           current={this.state.current}
         />
 
-        <View className='main'>
-          { 
-            this.state.current === 0 
-            ? 
-            <HotMainUI ingData={this.state.ingData}/> 
-            : 
-            <HotMainUI afterData={this.state.afterData}/>
-          }    
-          {/* { 
-            this.state.current === 0 
-            ? 
-            <HotMainUI ingData={this.state.ingData}/> 
-            : 
-            <HotMainUI afterData={this.state.afterData}/>
-          } */}
-
-        </View>
+        { 
+          this.state.current === 0 
+          ? 
+          <HotMainUI ingData={this.state.ingData} /> 
+          : 
+          <HotMainUI afterData={this.state.afterData} />
+        }    
       </View>
 
     )

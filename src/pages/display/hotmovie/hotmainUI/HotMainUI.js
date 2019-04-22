@@ -1,35 +1,41 @@
 import Taro from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import { Fragment } from 'react';
+import { AtRate } from 'taro-ui'
 
-import './hotmainUI.scss'
+import './HotMainUI.scss'
 
 
 export default class HotMainUI extends Taro.Component {
-
   
   render () {
+
     return (
-      <View id='main_wrap'>
+      <View className='main_wrap'>
         {
-          this.props.ingData.map((value) => {
+          (this.props.ingData || this.props.afterData).map(value => {
             return (
               <View key={value.id} className='movie_list'>
                 <View className='movie_img'>
-                  <image src={value.imgages.small} alt={value.title} mode='widthFix' />
+                  <image src={value.images.small} alt={value.title} />
                 </View>
                 <View className='movie_content'>
                   <View className='title'>
                     {value.title}
                   </View>
-                  <View className='data'>
+                  <View className='data text'>
                     {value.pubdates}
                   </View>
-                  <View className='explain'>
+                  <View className='explain text'>
                     {value.durations}
                   </View>
-                  <View className='score'>
-                    {value.rating.average}
+                  <View className='score text'>
+                    <AtRate 
+                      className='xing'
+                      value={value.rating.average/2} 
+                      size={10}
+                    />
+                    {value.rating.average}分（豆瓣）
                   </View>
                 </View>
               </View>

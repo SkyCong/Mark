@@ -6,12 +6,14 @@ import Taro from '@tarojs/taro'
 export default ({
   url = '',
   method = 'GET',
-  data = {}
+  data = {},
+  header = {}
   }) => {
   return Taro.request({
     url,
     method,
     data,
+    header,
     success: (res) => {
       return {
         datas: res

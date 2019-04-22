@@ -14,16 +14,16 @@ export default class Class extends Taro.Component {
     this.fetchData()
   }
 
-  async fetchData(){
-    let that = this
-    let result = await http({
-      url: 'http://api.markapp.cn/v160/singles/groupcat',
-      method : 'GET'
-    })
-    .then(result => {
-      that.modifyData(result.data.data)
-    })
-  }
+  // async fetchData(){
+  //   let that = this
+  //   let result = await http({
+  //     url: 'http://api.markapp.cn/v160/singles/groupcat',
+  //     method : 'GET'
+  //   })
+  //   .then(result => {
+  //     that.modifyData(result.data.data)
+  //   })
+  // }
   /**
    * 调整数据
    */

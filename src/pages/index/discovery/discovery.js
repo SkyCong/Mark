@@ -18,10 +18,10 @@ class Discovery extends Component {
   }
 
   async fetchData(){
-    let result = await http({
-      url: 'http://api.markapp.cn/v160/singles/banner',
-      method : 'GET'
-    })
+    // let result = await http({
+    //   url: 'http://api.markapp.cn/v160/singles/banner',
+    //   method : 'GET'
+    // })
     // let resultList = await http({
     //   url: 'http://api.markapp.cn/v160/singles/list',
     //   method : 'POST',

@@ -1,17 +1,19 @@
-#main_wrap{
+.main_wrap{
   background: #fff;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-top: 90px;
   .movie_list{
     width: 100%;
     height: 212px;
-    background: #f5f4f4;
+    background: #fff;
     border-bottom: 1px solid #ccc;
+    overflow: hidden;
     .movie_img{
       width: 212px;
-      height: 170px;
-      background: #f0f;
+      height: 100%;
+      float: left;
       display: flex;
       image{
         margin: auto;
@@ -20,9 +22,35 @@
       }
     }
     .movie_content{
-      width: 50%;
+      float: left;
+      font-size: 22px;
       height: 100%;
-      background: #00f;
+      line-height: 30px;
+      color: #818c91;
+      .title{
+        font-size: 30px;
+        color: #10181e;
+        padding: 20px 0;
+      }
+      .text{
+        width: 24em;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        line-height: 1.1rem;
+      }
+      // .explain{
+      //   width: 24em;
+      //   overflow:hidden;
+      //   text-overflow:ellipsis;
+      //   white-space:nowrap;
+      // }
+      // .score{
+      //   width: 24em;
+      //   overflow:hidden;
+      //   text-overflow:ellipsis;
+      //   white-space:nowrap;
+      // }
     }
   }
 

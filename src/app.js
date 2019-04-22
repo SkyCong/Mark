@@ -20,12 +20,12 @@ class App extends Component {
 
   config = {
     pages: [
-      "pages/display/hotmovie/hotmovie",
-      'pages/index/index',
+      // 'pages/index/index',
       'pages/display/search/search',
-      "pages/display/class/class",
-      "pages/display/daycard/daycard",
-      "pages/display/class_display/classDisplay",
+      // "pages/display/class/class",
+      // "pages/display/daycard/daycard",
+      // "pages/display/hotmovie/hotmovie",
+      // "pages/display/class_display/classDisplay",
 
     ],
     window: {
