@@ -4,7 +4,7 @@ import http from '../../../utils/fetch'
 
 import './classDisplay.scss'
 
-export default class Setting extends Taro.Component {
+export default class ClassDisplay extends Taro.Component {
   // config = {
   //   window: {
   //     navigationBarTitleText: '分类查找'
@@ -46,7 +46,6 @@ export default class Setting extends Taro.Component {
 
 
   render () {
-    console.log(this.state.itemData)
     return (
       <View id='class_display_wrap'>
         {

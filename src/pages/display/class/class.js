@@ -4,7 +4,7 @@ import http from '../../../utils/fetch'
 
 import './class.scss'
 
-export default class Setting extends Taro.Component {
+export default class Class extends Taro.Component {
 
   constructor (props) {
     super(props)
@@ -45,7 +45,7 @@ export default class Setting extends Taro.Component {
   }
   
   render () {
-    console.log(this.state.navData)
+    // console.log(this.state.navData)
     return (
       <View id='class_wrap'>
         {

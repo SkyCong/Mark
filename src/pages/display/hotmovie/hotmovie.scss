@@ -1,0 +1,23 @@
+#hot_wrap{
+  background: #fff;
+
+  .check{
+    width: 100%;
+    height: 80px;
+    background: #f5f4f4;
+    font-weight: bold;
+    .ing{
+      width:50%;
+      height: 100%;
+      background: #f0f;
+  
+    }
+    .after{
+      width: 50%;
+      height: 100%;
+      background: #00f;
+  
+    }
+  }
+
+}

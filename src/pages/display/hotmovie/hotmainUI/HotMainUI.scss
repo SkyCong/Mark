@@ -1,0 +1,29 @@
+#main_wrap{
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  .movie_list{
+    width: 100%;
+    height: 212px;
+    background: #f5f4f4;
+    border-bottom: 1px solid #ccc;
+    .movie_img{
+      width: 212px;
+      height: 170px;
+      background: #f0f;
+      display: flex;
+      image{
+        margin: auto;
+        width: 110px;
+        height: 160px;
+      }
+    }
+    .movie_content{
+      width: 50%;
+      height: 100%;
+      background: #00f;
+    }
+  }
+
+}

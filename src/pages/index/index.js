@@ -15,11 +15,11 @@ import './index.scss'
 
 class Index extends Component {
 
-  config = {
-    window: {
-      navigationBarTitleText: '发现'
-    }
-  }
+  // config = {
+  //   window: {
+  //     navigationBarTitleText: '发现'
+  //   }
+  // }
 
   state = {
     current : 0
