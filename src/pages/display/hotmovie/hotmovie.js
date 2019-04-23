@@ -10,12 +10,10 @@ import './hotmovie.scss'
 
 
 export default class HotMovie extends Taro.Component {
-  // config = {
-  //   window: {
-  //     navigationBarTitleText: '分类查找'
-  //   }
-  // }
 
+  config = {
+    navigationBarTitleText: '影院热映'
+  }
 
   constructor (props) {
     super(props)

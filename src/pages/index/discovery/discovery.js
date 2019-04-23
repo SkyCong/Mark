@@ -8,6 +8,11 @@ import './discovery.scss'
 
 
 class Discovery extends Component {
+
+  config = {
+    navigationBarTitleText: '发现'
+  }
+
   constructor(props){
     super(props)
     this.state = {

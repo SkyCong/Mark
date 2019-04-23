@@ -5,6 +5,9 @@ import http from '../../../utils/fetch'
 import './class.scss'
 
 export default class Class extends Taro.Component {
+  config = {
+    navigationBarTitleText: '分类'
+  }
 
   constructor (props) {
     super(props)

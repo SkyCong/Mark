@@ -1,32 +1,35 @@
 import Taro from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 import http from '../../../utils/fetch'
+import { AtInput }  from 'taro-ui'
 
 import './search.scss'
 
 export default class Setting extends Taro.Component {
-  // config = {
-  //   window: {
-  //     navigationBarTitleText: '分类查找'
-  //   }
-  // }
+  config = {
+    navigationBarTitleText: '搜索'
+  }
 
   constructor (props) {
     super(props)
     this.state = {
-      dis: true,
-      searchData : []
+      dis: false,
+      del: false,
+      searchData : [],
+      val: []
     }
     this.fetchData()
   }
 
   async fetchData(){
 
-    let result = await http({
-      url: 'https://douban.uieee.com/v2/movie/search',
+    let result = await http({      
+      url: 'https://douban111.uieee.csom/v2/movie/search',
+
+      // url: 'https://www.skycong.xyz/v2/movie/search',
       data: {
         count: 12,
-        q:	'01',
+        q: this.state.val,
         start: 0
       },
       header:{
@@ -34,10 +37,9 @@ export default class Setting extends Taro.Component {
       },
       method : 'GET',
     })
-    console.log(result)
 
     this.setState({
-      searchData : result
+      searchData : result.data.subjects
     })
   }
 
@@ -47,29 +49,51 @@ export default class Setting extends Taro.Component {
   //       telphone: val
   //   });
   // }
-  // listenerPhoneInput(e){ 
-  //   console.log(e.detail.value)
-  // }
-  
+  handleChange(val) { 
+    if(val === ''){
+      this.setState({
+        dis : false,
+        del : false
+      })
+    } 
+    else{
+      this.setState({
+        val ,
+        dis : true,
+        del : true
+      },() => {
+        this.fetchData()
+      })
+    }
+  }
 
-  // componentWillMount () {}
-  // onClick={() => {
-  //   // this.setState({
-  //   //   dis : !this.state.dis
-  //   // })
-  //   console.log(0)
-  // }}
+  handleClick() { 
+    this.setState({
+      val : '',
+      del : false,
+      dis : false,
+    })
+  }
+
   render () {
-    // console.log(this.state.searchData)
+    console.log(this.state.val)
     return (
       <View id='search_wrap'>
         <View className='search_input' >
-          <input 
-            placeholder="输入电影名/导演/演员/编剧" 
-            auto-focus 
-            // bindinput="listenerPhoneInput"
-            
+          <AtInput
+            name='value'
+            type='text'
+            title=''
+            placeholder='输入电影名/导演/演员/编剧'
+            value={this.state.val}
+            onChange={this.handleChange.bind(this)}
           />
+          <View 
+            className={`del ${del === true ? 'show' : 'hide'}`}
+            onClick={this.handleClick.bind(this)}
+          >
+            <image src={require('../../../assets/del.png')} alt='del' />
+          </View>
         </View>
         <View className='search_main'>
         
@@ -84,7 +108,7 @@ export default class Setting extends Taro.Component {
               this.state.searchData .map(value => {
                 return (
                   <View key={value.id} className='item'>
-                    <image src={value.images.small} alt={value.alt} />
+                    <image src={value.images.large} alt={value.alt} />
                   
                     <View className='like'>
                       +
@@ -105,3 +129,28 @@ export default class Setting extends Taro.Component {
     )
   }
 }
+
+
+// config = {
+//   navigationBarTitleText: 'loading...'
+// }
+
+// state = {
+//   swiperList: [],
+//   detail: {}
+// }
+
+// constructor(props) {
+//   super(props)
+
+//   this.swiperList = []
+// }
+
+// async fetchData() {
+//   let result = await fetch({
+//     url: 'http://localhost:9001/data'
+//   })
+
+//   Taro.setNavigationBarTitle({
+//     title: result.data.name
+//   })

@@ -5,11 +5,9 @@ import http from '../../../utils/fetch'
 import './classDisplay.scss'
 
 export default class ClassDisplay extends Taro.Component {
-  // config = {
-  //   window: {
-  //     navigationBarTitleText: '分类查找'
-  //   }
-  // }
+  config = {
+    navigationBarTitleText: '导演'
+  }
 
 
   constructor (props) {

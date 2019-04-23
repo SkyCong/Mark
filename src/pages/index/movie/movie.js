@@ -2,6 +2,11 @@ import Taro from '@tarojs/taro'
 import { View, Button } from '@tarojs/components'
 
 export default class Movie extends Taro.Component {
+
+  config = {
+    navigationBarTitleText: '我的电影'
+  }
+
   constructor (props) {
     super(props)
   }
