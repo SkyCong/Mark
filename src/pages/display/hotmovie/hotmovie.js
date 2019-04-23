@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
-import { Fragment } from 'react';
+import { View } from '@tarojs/components'
 import { AtTabBar }  from 'taro-ui'
 import { HotMainUI } from './hotmainUI/HotMainUI'
 
@@ -25,29 +24,29 @@ export default class HotMovie extends Taro.Component {
     this.fetchData()
   }
 
-  // async fetchData(){
-  //   let resultIng = await http({
-  //     url: 'http://api.markapp.cn/v160/movies/intheaters',
-  //     method : 'GET'
-  //   })
-  //   let resultAfter = await http({
-  //     url: 'https://api.douban.com/v2/movie/coming_soon',
-  //     data: {
-  //       apikey: '0b2bdeda43b5688921839c8ecb20399b',
-  //       start: 0,
-  //     },
-  //     header:{
-  //       "Content-Type":"json"
-  //     },
-  //     method : 'GET'
-  //   })    
+  async fetchData(){
+    let resultIng = await http({
+      url: 'http://api.markapp.cn/v160/movies/intheaters',
+      method : 'GET'
+    })
+    let resultAfter = await http({
+      url: 'https://api.douban.com/v2/movie/coming_soon',
+      data: {
+        apikey: '0b2bdeda43b5688921839c8ecb20399b',
+        start: 0,
+      },
+      header:{
+        "Content-Type":"json"
+      },
+      method : 'GET'
+    })    
 
-  //   this.setState({
-  //     ingData : resultIng.data.subjects,
-  //     afterData: resultAfter.data.subjects
-  //   })
+    this.setState({
+      ingData : resultIng.data.subjects,
+      afterData: resultAfter.data.subjects
+    })
 
-  // }
+  }
 
   handleClick (value) {
     this.setState({

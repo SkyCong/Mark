@@ -24,7 +24,7 @@ export default class Setting extends Taro.Component {
   async fetchData(){
 
     let result = await http({      
-      url: 'https://douban111.uieee.csom/v2/movie/search',
+      url: 'https://douban.uieee.com/v2/movie/search',
 
       // url: 'https://www.skycong.xyz/v2/movie/search',
       data: {
@@ -43,12 +43,7 @@ export default class Setting extends Taro.Component {
     })
   }
 
-  // watchSearch : function (e) {
-  //   var val = e.detail.value;
-  //   this.setData({
-  //       telphone: val
-  //   });
-  // }
+
   handleChange(val) { 
     if(val === ''){
       this.setState({

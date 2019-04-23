@@ -23,10 +23,10 @@ class Discovery extends Component {
   }
 
   async fetchData(){
-    // let result = await http({
-    //   url: 'http://api.markapp.cn/v160/singles/banner',
-    //   method : 'GET'
-    // })
+    let result = await http({
+      url: 'http://api.markapp.cn/v160/singles/banner',
+      method : 'GET'
+    })
     // let resultList = await http({
     //   url: 'http://api.markapp.cn/v160/singles/list',
     //   method : 'POST',
@@ -42,6 +42,7 @@ class Discovery extends Component {
       url: 'http://localhost:9000/data',
       method : 'GET'
     })
+    console.log(resultList)
     this.setState({
       bannerData : result.data.data,
       listData : resultList.data.slice(0,10)
