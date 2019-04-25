@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import http from '../../../utils/fetch'
 import { AtInput }  from 'taro-ui'
 
@@ -16,15 +16,24 @@ export default class Setting extends Taro.Component {
       dis: false,
       del: false,
       searchData : [],
-      val: []
+      lineData : [],
+      val: [],
+      sta: []
     }
     this.fetchData()
   }
 
   async fetchData(){
+    let line = await http({      
+      // url: 'https://douban.uieee.com/v2/movie/search',
 
+      url: 'http://api.markapp.cn/v160/resources/lines?',
+
+      method : 'GET',
+    })
     let result = await http({      
-      url: 'https://douban.uieee.com/v2/movie/search',
+      // url: 'https://douban.uieee.com/v2/movie/search',
+      url: 'http://t.yushu.im/v2/movie/search',
 
       // url: 'https://www.skycong.xyz/v2/movie/search',
       data: {
@@ -39,7 +48,8 @@ export default class Setting extends Taro.Component {
     })
 
     this.setState({
-      searchData : result.data.subjects
+      searchData : result.data.subjects,
+      lineData : line.data.data
     })
   }
 
@@ -66,12 +76,14 @@ export default class Setting extends Taro.Component {
     this.setState({
       val : '',
       del : false,
-      dis : false,
+      dis : false
     })
   }
 
   render () {
-    console.log(this.state.val)
+
+    console.log(this.state.sta)
+
     return (
       <View id='search_wrap'>
         <View className='search_input' >
@@ -94,20 +106,39 @@ export default class Setting extends Taro.Component {
         
           <View className={`search_tips ${dis === false ? 'show' : 'hide'}`}>
             <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-            <View className='texts'>生活就像一盒巧克力，你永远不知道你会得到什么。</View>
-            <View className='textend'>---《阿甘正传》</View>
+            <View className='texts'>{lineData.word}</View>
+            <View className='textend'>{lineData.title}</View>
           </View>
 
-          <View className={`search_data ${dis === false ? 'hide' : 'show'}`}>
+          <View className={`search_data ${dis === false ? 'hide' : ''}`}>
             {
-              this.state.searchData .map(value => {
+              this.state.searchData.map(value => {
                 return (
                   <View key={value.id} className='item'>
                     <image src={value.images.large} alt={value.alt} />
                   
-                    <View className='like'>
-                      +
+                    <View className='like' onClick={
+                      ()=>{
+                        var index = this.state.sta.indexOf(value.id)
+                        if(index === -1){
+                          this.setState({
+                            sta : [
+                              ...this.state.sta,
+                              value.id//value.id不用展开
+                            ]
+                          })                          
+                        }
+                        else{
+                          this.state.sta.splice(index,1)  
+                          this.setState({
+                            sta : this.state.sta,
+                          })  
+                        }
+                      }
+                    }>
+                      {this.state.sta.includes(value.id) ? '✔️' : '+'}
                     </View>
+                      
 
                     <View className='text'>
                       {value.title}
@@ -148,4 +179,5 @@ export default class Setting extends Taro.Component {
 
 //   Taro.setNavigationBarTitle({
 //     title: result.data.name
-//   })
+//   })value.id === this.state.sta ? '✔️' : '+'
+//indexOf(find,

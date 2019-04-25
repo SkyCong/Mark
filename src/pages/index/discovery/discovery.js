@@ -28,24 +28,21 @@ class Discovery extends Component {
       method : 'GET'
     })
     // let resultList = await http({
-    //   url: 'http://api.markapp.cn/v160/singles/list',
-    //   method : 'POST',
+    //   url: 'https://hongye567.github.io/static/json/articles',
+    //   method : 'GET',
     //   data: {
-    //     muid:	'ppuCgPJ6/OXUEa000SjtiQ==',
-    //     uid:	832059,
     //     count: 10,
     //     start: 0
-    //   },
-    //   credentials : 'include'
+    //   }
     // })
     let resultList = await http({
       url: 'http://localhost:9000/data',
       method : 'GET'
     })
-    console.log(resultList)
+    console.log(resultList.data)
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data.slice(0,10)
+      listData : resultList.data
     })
 
   }
