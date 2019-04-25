@@ -3,6 +3,8 @@ import { View } from '@tarojs/components'
 import http from '../../../utils/fetch'
 import { AtInput }  from 'taro-ui'
 
+import { List }  from '../../components/movie_list/List'
+
 import './search.scss'
 
 export default class Setting extends Taro.Component {
@@ -24,12 +26,15 @@ export default class Setting extends Taro.Component {
   }
 
   async fetchData(){
+    // wx.vibrateLong()
     let line = await http({      
       // url: 'https://douban.uieee.com/v2/movie/search',
 
       url: 'http://api.markapp.cn/v160/resources/lines?',
-
       method : 'GET',
+      // header : {
+      //   no-cache
+      // }
     })
     let result = await http({      
       // url: 'https://douban.uieee.com/v2/movie/search',
@@ -82,17 +87,17 @@ export default class Setting extends Taro.Component {
 
   render () {
 
-    console.log(this.state.sta)
+    // console.log(this.state.sta)
 
     return (
       <View id='search_wrap'>
         <View className='search_input' >
           <AtInput
-            name='value'
+            name='a'
             type='text'
             title=''
             placeholder='输入电影名/导演/演员/编剧'
-            value={this.state.val}
+            value={`${this.state.val}`}
             onChange={this.handleChange.bind(this)}
           />
           <View 
@@ -103,52 +108,15 @@ export default class Setting extends Taro.Component {
           </View>
         </View>
         <View className='search_main'>
-        
+
           <View className={`search_tips ${dis === false ? 'show' : 'hide'}`}>
             <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
             <View className='texts'>{lineData.word}</View>
             <View className='textend'>{lineData.title}</View>
           </View>
 
-          <View className={`search_data ${dis === false ? 'hide' : ''}`}>
-            {
-              this.state.searchData.map(value => {
-                return (
-                  <View key={value.id} className='item'>
-                    <image src={value.images.large} alt={value.alt} />
-                  
-                    <View className='like' onClick={
-                      ()=>{
-                        var index = this.state.sta.indexOf(value.id)
-                        if(index === -1){
-                          this.setState({
-                            sta : [
-                              ...this.state.sta,
-                              value.id//value.id不用展开
-                            ]
-                          })                          
-                        }
-                        else{
-                          this.state.sta.splice(index,1)  
-                          this.setState({
-                            sta : this.state.sta,
-                          })  
-                        }
-                      }
-                    }>
-                      {this.state.sta.includes(value.id) ? '✔️' : '+'}
-                    </View>
-                      
+          <List data={ this.state }></List>
 
-                    <View className='text'>
-                      {value.title}
-                    </View>
-
-                  </View>
-                )
-              })
-            }
-          </View>        
         </View>
 
       </View>
@@ -179,5 +147,5 @@ export default class Setting extends Taro.Component {
 
 //   Taro.setNavigationBarTitle({
 //     title: result.data.name
-//   })value.id === this.state.sta ? '✔️' : '+'
+//   })value.id === this.state.sta.id ? '✔️' : '+'
 //indexOf(find,

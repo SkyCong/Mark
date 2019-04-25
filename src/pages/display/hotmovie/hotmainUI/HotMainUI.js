@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
-import { Fragment } from 'react';
+import { View } from '@tarojs/components'
+
 import { AtRate } from 'taro-ui'
 
 import './HotMainUI.scss'

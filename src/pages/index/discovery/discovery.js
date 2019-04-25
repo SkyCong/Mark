@@ -37,12 +37,15 @@ class Discovery extends Component {
     // })
     let resultList = await http({
       url: 'http://localhost:9000/data',
-      method : 'GET'
+      method : 'GET',
+      // header : {
+      //   'Cache-control':'max3600'
+      // }
     })
-    console.log(resultList.data)
+    // console.log(resultList.data)
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data
+      listData : resultList.data.slice(0,10)
     })
 
   }
