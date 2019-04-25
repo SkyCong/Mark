@@ -1,19 +1,25 @@
 import Taro from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
-import { Fragment } from 'react';
+import { View } from '@tarojs/components'
+
 import { AtRate } from 'taro-ui'
 
 import './HotMainUI.scss'
 
 
 export default class HotMainUI extends Taro.Component {
-  
+
+  constructor (props) {
+    super(props)
+  } 
+
+
+
   render () {
 
     return (
       <View className='main_wrap'>
         {
-          (this.props.ingData || this.props.afterData).map(value => {
+          this.props.Data.map(value => {
             return (
               <View key={value.id} className='movie_list'>
                 <View className='movie_img'>
@@ -46,4 +52,9 @@ export default class HotMainUI extends Taro.Component {
 
     )
   }
+
+}
+
+HotMainUI.defaultProps={
+  name:'default name'
 }

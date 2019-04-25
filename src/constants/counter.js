@@ -1,2 +1,2 @@
-export const ADD = 'ADD'
-export const MINUS = 'MINUS'
+//收藏功能
+export const LIKE = 'LIKE'

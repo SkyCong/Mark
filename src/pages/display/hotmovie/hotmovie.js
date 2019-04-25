@@ -72,9 +72,9 @@ export default class HotMovie extends Taro.Component {
         { 
           this.state.current === 0 
           ? 
-          <HotMainUI ingData={this.state.ingData} /> 
+          <HotMainUI Data={this.state.ingData} /> 
           : 
-          <HotMainUI afterData={this.state.afterData} />
+          <HotMainUI Data={this.state.afterData} />
         }    
       </View>
 

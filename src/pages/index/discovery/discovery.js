@@ -39,7 +39,7 @@ class Discovery extends Component {
       url: 'http://localhost:9000/data',
       method : 'GET'
     })
-    console.log(resultList.data)
+    // console.log(resultList.data)
     this.setState({
       bannerData : result.data.data,
       listData : resultList.data

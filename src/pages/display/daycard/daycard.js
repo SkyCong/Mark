@@ -45,9 +45,6 @@ export default class DayCard extends Taro.Component {
     })
 
   }
-  aaa(e){
-    console.log(e)
-  }
 
   handleClick (value) {
     this.setState({

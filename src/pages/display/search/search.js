@@ -2,10 +2,24 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import http from '../../../utils/fetch'
 import { AtInput }  from 'taro-ui'
+import { connect } from '@tarojs/redux'
 
 import './search.scss'
 
-export default class Setting extends Taro.Component {
+
+
+@connect(({ counter }) => ({
+  counter
+}), (dispatch) => ({
+  like () {
+    dispatch(like())
+  },
+}))
+
+export default class Search extends Taro.Component {
+
+  
+
   config = {
     navigationBarTitleText: '搜索'
   }
@@ -33,9 +47,9 @@ export default class Setting extends Taro.Component {
     })
     let result = await http({      
       // url: 'https://douban.uieee.com/v2/movie/search',
-      url: 'http://t.yushu.im/v2/movie/search',
+      // url: 'http://t.yushu.im/v2/movie/search',
 
-      // url: 'https://www.skycong.xyz/v2/movie/search',
+      url: 'https://www.skycong.xyz/v2/movie/search',
       data: {
         count: 12,
         q: this.state.val,
@@ -81,8 +95,9 @@ export default class Setting extends Taro.Component {
   }
 
   render () {
-
-    console.log(this.state.sta)
+    
+    // console.log(this.props.counter.likeState)
+    // console.log(this.state.sta)
 
     return (
       <View id='search_wrap'>
@@ -92,7 +107,7 @@ export default class Setting extends Taro.Component {
             type='text'
             title=''
             placeholder='输入电影名/导演/演员/编剧'
-            value={this.state.val}
+            value={`${this.state.val}`}
             onChange={this.handleChange.bind(this)}
           />
           <View 
@@ -126,14 +141,17 @@ export default class Setting extends Taro.Component {
                               ...this.state.sta,
                               value.id//value.id不用展开
                             ]
-                          })                          
+                            }
+                          )                          
                         }
                         else{
-                          this.state.sta.splice(index,1)  
+                          this.state.sta.splice(index,1) 
                           this.setState({
-                            sta : this.state.sta,
-                          })  
+                            sta : this.state.sta
+                            }
+                          ) 
                         }
+                        this.props.counter.likeState = this.state.sta
                       }
                     }>
                       {this.state.sta.includes(value.id) ? '✔️' : '+'}

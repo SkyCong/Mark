@@ -1,21 +1,18 @@
-import { ADD, MINUS } from '../constants/counter'
+import { LIKE } from '../constants/counter'
 
 const INITIAL_STATE = {
-  num: 0
+  likeState: []
 }
 
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case ADD:
+    case LIKE:
       return {
         ...state,
-        num: state.num + 1
+        likeState: [
+          ...state.likeState
+        ]
       }
-     case MINUS:
-       return {
-         ...state,
-         num: state.num - 1
-       }
      default:
        return state
   }
