@@ -141,6 +141,8 @@ export default class Search extends Taro.Component {
                               ...this.state.sta,
                               value.id//value.id不用展开
                             ]
+                          },function(){
+                            this.props.counter.likeState = this.state.sta
                           }
                         )                          
                         }
@@ -148,10 +150,11 @@ export default class Search extends Taro.Component {
                           this.state.sta.splice(index,1) 
                           this.setState({
                             sta : this.state.sta
+                            },function(){
+                              this.props.counter.likeState = this.state.sta
                             }
                           ) 
                         }
-                        this.props.counter.likeState = this.state.sta
                       }
                     }>
                       {this.state.sta.includes(value.id) ? '✔️' : '+'}
