@@ -6,8 +6,6 @@ import { connect } from '@tarojs/redux'
 
 import './search.scss'
 
-
-
 @connect(({ counter }) => ({
   counter
 }), (dispatch) => ({
@@ -97,9 +95,9 @@ export default class Search extends Taro.Component {
 
   render () {
     
-    console.log(this.props.counter.likeState)
-    console.log('_________________________')
-    console.log(this.state.id)
+    // console.log(this.props.counter.likeState)
+    // console.log('_________________________')
+    // console.log(this.state.id)
 
     return (
       <View id='search_wrap'>
