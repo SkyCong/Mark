@@ -32,7 +32,7 @@ export default class Search extends Taro.Component {
       searchData : [],
       lineData : [],
       val: [],
-      sta: []
+      sta: this.props.counter.likeState
     }
     this.fetchData()
   }
@@ -96,7 +96,7 @@ export default class Search extends Taro.Component {
 
   render () {
     
-    // console.log(this.props.counter.likeState)
+    console.log(this.props.counter.likeState)
     // console.log(this.state.sta)
 
     return (
@@ -141,8 +141,8 @@ export default class Search extends Taro.Component {
                               ...this.state.sta,
                               value.id//value.id不用展开
                             ]
-                            }
-                          )                          
+                          }
+                        )                          
                         }
                         else{
                           this.state.sta.splice(index,1) 

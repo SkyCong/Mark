@@ -22,6 +22,11 @@ class Discovery extends Component {
     this.fetchData()
   }
 
+  random(lower, upper) {
+    return Math.floor(Math.random() * (upper - lower)) + lower;
+  }
+  //调用：console.log(random(1,100));
+
   async fetchData(){
     let result = await http({
       url: 'http://api.markapp.cn/v160/singles/banner',
@@ -40,9 +45,10 @@ class Discovery extends Component {
       method : 'GET'
     })
     // console.log(resultList.data)
+    let rem = 
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data
+      listData : resultList.data.slice(10,20)
     })
 
   }
