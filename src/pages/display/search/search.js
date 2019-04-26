@@ -32,7 +32,8 @@ export default class Search extends Taro.Component {
       searchData : [],
       lineData : [],
       val: [],
-      sta: this.props.counter.likeState
+      sta: this.props.counter.likeState,
+      id: this.props.counter.id
     }
     this.fetchData()
   }
@@ -97,7 +98,8 @@ export default class Search extends Taro.Component {
   render () {
     
     console.log(this.props.counter.likeState)
-    // console.log(this.state.sta)
+    console.log('_________________________')
+    console.log(this.state.id)
 
     return (
       <View id='search_wrap'>
@@ -134,30 +136,40 @@ export default class Search extends Taro.Component {
                   
                     <View className='like' onClick={
                       ()=>{
-                        var index = this.state.sta.indexOf(value.id)
+
+                        var index = this.state.id.indexOf(value.id)
+
+                        console.log(index)
                         if(index === -1){
                           this.setState({
                             sta : [
                               ...this.state.sta,
+                              value//value.id不用展开
+                            ],
+                            id : [
+                              ...this.state.id,
                               value.id//value.id不用展开
                             ]
                           },function(){
+                            this.props.counter.id = this.state.id
                             this.props.counter.likeState = this.state.sta
                           }
                         )                          
                         }
                         else{
+                          this.state.id.splice(index,1) 
                           this.state.sta.splice(index,1) 
                           this.setState({
                             sta : this.state.sta
                             },function(){
+                              this.props.counter.id = this.state.id
                               this.props.counter.likeState = this.state.sta
                             }
                           ) 
                         }
                       }
                     }>
-                      {this.state.sta.includes(value.id) ? '✔️' : '+'}
+                      {this.state.id.includes(value.id) ? '✔️' : '+'}    
                     </View>
                       
 
@@ -202,3 +214,11 @@ export default class Search extends Taro.Component {
 //     title: result.data.name
 //   })value.id === this.state.sta ? '✔️' : '+'
 //indexOf(find,
+
+// {
+                        
+//   this.state.sta.map(values =>{
+    
+//     return(values.id === value.id ? '✔️' : '+')
+//   })
+// }
