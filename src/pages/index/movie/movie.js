@@ -1,50 +1,58 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
+import { AtTabBar }  from 'taro-ui'
+import { MovieListUI } from './movielist/MovieListUI'
+
+import http from '../../../utils/fetch'
 
 import './movie.scss'
 
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  like () {
-    dispatch(like())
-  },
-}))
 
-export default class Movie extends Taro.Component {
+export default class HotMovie extends Taro.Component {
 
   config = {
-    navigationBarTitleText: '我的电影'
+    navigationBarTitleText: '影院热映'
   }
 
   constructor (props) {
     super(props)
+    this.state = {
+      current: 0
+    }
   }
 
-
-  componentWillMount () {}
+  handleClick (value) {
+    this.setState({
+      current: value
+    })
+  }
   
   render () {
-
     return (
       <View className='movie_wrap'>
-        <View className='movie_data'>
-          {
-            this.props.counter.likeState.map(value => {
-              return (
-                <View key={value.id} className='item'>
-                  <image src={value.images.large} alt={value.alt} />
-                  <View className='text'>
-                    {value.title}
-                  </View>
-                </View>
-              )
-            })
-          }
-        </View>        
+        <AtTabBar
+          className='check'
+          selectedColor={'#000'}
+          color={'#496069'}
+          tabList={[
+            { title: '想看' },
+            { title: '已看' }
+          ]}
+          onClick={this.handleClick.bind(this)}
+          current={this.state.current}
+        />
+        <View className='tips'>
+          <View className={`hover ${this.state.current === 0 ?'hover_left' : 'hover_right'}`}></View>
+        </View>
+        { 
+          this.state.current === 0 
+          ? 
+          <MovieListUI data={this.state.current}/> 
+          : 
+          <MovieListUI data={this.state.current}/>
+        }    
       </View>
+
     )
   }
-
 }

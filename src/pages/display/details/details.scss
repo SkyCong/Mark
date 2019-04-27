@@ -1,0 +1,95 @@
+#daycard_wrap{
+  background: #f4f4f4;
+  height: 100vh;
+  .card_list{
+    width: 100%;
+    height: 1000px;
+    padding: 20px 0;
+    
+      
+    .card{
+      width: 95%;
+      height: 99%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px #cfd2d4;
+      
+      image{
+        width: 100%;
+        height: 50%;
+        background: #00f;
+        margin-bottom: 28px;
+      }
+
+      .content{
+        font-size: 30px;
+        color: #182026;
+        padding: 0 36px;
+        .textC{
+          width: 20em;
+        }
+        .textE{
+          width: 20em;
+        }
+        .textend{
+          width: 100%;
+          text-align: right;
+          padding-top: 50px;
+        }
+      }
+    }
+    
+
+
+  }
+
+
+  .operation{
+    width: 100%;
+    height: 100px;
+    background: #00f;
+    position: fixed;
+    bottom: 50px;
+    font-weight: bold;
+    z-index: 999;
+    .see_movie{
+
+    }
+    .like_movie{
+
+    }
+    .share_movie{
+
+    }
+  }
+}
+
+// <View id='daycard_wrap'>
+
+// <View className='card'>
+
+// </View>
+
+// <View className='operation'>
+
+//   <View className='see_movie'>
+
+//   </View>
+
+//   <View className='like_movie'>
+
+//   </View>
+
+//   <View className='share_movie'>
+
+//   </View>
+// </View>
+
+.at-input{
+
+
+  margin-left: 0px !important;
+}
