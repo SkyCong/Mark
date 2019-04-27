@@ -28,7 +28,11 @@ export default class MovieListUI extends Taro.Component {
         {
           this.props.counter.likeState.map(value => {
             return (
-              <View key={value.id} className='item'>
+              <View key={value.id} className='item' onClick={ () => {
+                Taro.navigateTo({
+                  url: `/pages/display/details/details?id=${value.id}`
+                })
+              }}> 
                 <image src={value.images.large} alt={value.alt} />
                 <View className='text'>
                   {value.title}

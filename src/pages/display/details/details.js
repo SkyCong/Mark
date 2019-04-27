@@ -1,121 +1,71 @@
 import Taro from '@tarojs/taro'
-import { View , Swiper, SwiperItem } from '@tarojs/components'
-import { AtTabBar }  from 'taro-ui'
-import { HotMainUI } from './hotmainUI/HotMainUI'
+import { View } from '@tarojs/components'
 
 import http from '../../../utils/fetch'
 
-import './daycard.scss'
+import './details.scss'
 
 
-export default class DayCard extends Taro.Component {
-  config = {
-    navigationBarTitleText: '每日电影卡片推荐'
-  }
-
+export default class Details extends Taro.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-
+      detailsData : []
     }
+  }
+
+  componentWillMount () {
     this.fetchData()
   }
 
   async fetchData(){
-    let resultIng = await http({
-      url: 'http://api.markapp.cn/v160/movies/intheaters',
+    let detailsData = await http({
+      url: `http://api.markapp.cn/v160/Mobile/movies/${this.$router.params.id}`,
       method : 'GET'
-    })
-    let resultAfter = await http({
-      url: 'https://www.skycong.xyz/v2/movie/coming_soon',
-      data: {
-        apikey: '0b2bdeda43b5688921839c8ecb20399b',
-        start: 0,
-      },
-      header:{
-        "Content-Type":"json"
-      },
-      method : 'GET'
-    })    
-
+    })  
     this.setState({
-      ingData : resultIng.data.subjects,
-      afterData: resultAfter.data.subjects
+      detailsData : detailsData.data.data
+    })
+    Taro.setNavigationBarTitle({
+      title: detailsData.data.data.name
     })
 
   }
 
-  handleClick (value) {
-    this.setState({
-      current: value
-    })
+  handleLikeClick () {
+    // this.setState({
+    //   current: value
+    // })
+    console.log('asd')
+    // <View className='play'></View>
+
   }
   
   render () {
+    console.log(this.state.detailsData)
     return (
-      <View id='daycard_wrap'>
-        <Swiper
-            className='card_list'
-            indicatorColor='#999'
-            indicatorActiveColor='#333'
-            indicatorDots
-            onChange="aaa"
-        >
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-          
+      <View className='details_wrap'>
+        <View className='img'>
+          <image src={detailsData.img_url} alt='img' />
+        </View>
 
-
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-
-
-
-
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-
-
-
-        </Swiper>
-
-        <View className='operation'>
-
-          <View className='see_movie'>
+        <View className='main'>
+        {detailsData.casts}
+          <View className='like'>
 
           </View>
 
-          <View className='like_movie'>
+          <View className='pj'>
 
           </View>
 
-          <View className='share_movie'>
+          <View className='header'>
 
+          </View>
+
+          <View className='movie_content'>
+            
           </View>
         </View>
 
