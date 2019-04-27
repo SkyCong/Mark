@@ -1,7 +1,8 @@
 import { LIKE } from '../constants/counter'
 
 const INITIAL_STATE = {
-  likeState: []
+  likeState: [],
+  id: []
 }
 
 export default function counter (state = INITIAL_STATE, action) {
@@ -11,7 +12,7 @@ export default function counter (state = INITIAL_STATE, action) {
         ...state,
         likeState: [
           ...state.likeState
-        ]
+        ]    
       }
      default:
        return state

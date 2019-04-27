@@ -1,6 +1,5 @@
-import { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
 import { AtTabBar } from 'taro-ui'
 
 // import { Search } from '../search'
@@ -33,7 +32,11 @@ class Index extends Component {
     this.setState({
       current
     })
+    Taro.setNavigationBarTitle({
+      title: current === 0 ? '发现' : current === 1 ? '我的电影' : '账号'
+    })
   }
+
 
   render () {
 

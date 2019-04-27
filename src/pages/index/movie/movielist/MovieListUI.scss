@@ -1,0 +1,24 @@
+.movie_data{
+    overflow: hidden;
+  .item{
+    float: left;
+    width: 30%;
+    height: 380px;
+    margin: 2.5% 0 0 2.5%;
+    background: #fff;
+    color: #496069;
+    text-align: center;
+    image{
+      width: 100%;
+      height: 320px;
+    }
+    .text{
+      width: 100%;
+      padding: 0 6px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size: 22px;
+    }
+  }
+}
