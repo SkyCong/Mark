@@ -93,6 +93,46 @@ export default class Search extends Taro.Component {
     })
   }
 
+  handleMoveClick(id) { 
+    Taro.navigateTo({
+      url: `/pages/display/details/details?id=${id}`
+    })
+  }
+
+  handleLikeClick=(value,e) => { 
+    e.stopPropagation()
+    var index = this.state.id.indexOf(value.id)
+
+    console.log(index)
+    if(index === -1){
+      this.setState({
+        sta : [
+          ...this.state.sta,
+          value//value.id不用展开
+        ],
+        id : [
+          ...this.state.id,
+          value.id//value.id不用展开
+        ]
+      },function(){
+        this.props.counter.id = this.state.id
+        this.props.counter.likeState = this.state.sta
+      }
+    )                          
+    }
+    else{
+      this.state.id.splice(index,1) 
+      this.state.sta.splice(index,1) 
+      this.setState({
+        sta : this.state.sta
+        },function(){
+          this.props.counter.id = this.state.id
+          this.props.counter.likeState = this.state.sta
+        }
+      ) 
+    }
+  }
+
   render () {
     
     // console.log(this.props.counter.likeState)
@@ -129,44 +169,10 @@ export default class Search extends Taro.Component {
             {
               this.state.searchData.map(value => {
                 return (
-                  <View key={value.id} className='item'>
+                  <View key={value.id} className='item' onClick={this.handleMoveClick.bind(this,value.id)}> 
                     <image src={value.images.large} alt={value.alt} />
                   
-                    <View className='like' onClick={
-                      ()=>{
-
-                        var index = this.state.id.indexOf(value.id)
-
-                        console.log(index)
-                        if(index === -1){
-                          this.setState({
-                            sta : [
-                              ...this.state.sta,
-                              value//value.id不用展开
-                            ],
-                            id : [
-                              ...this.state.id,
-                              value.id//value.id不用展开
-                            ]
-                          },function(){
-                            this.props.counter.id = this.state.id
-                            this.props.counter.likeState = this.state.sta
-                          }
-                        )                          
-                        }
-                        else{
-                          this.state.id.splice(index,1) 
-                          this.state.sta.splice(index,1) 
-                          this.setState({
-                            sta : this.state.sta
-                            },function(){
-                              this.props.counter.id = this.state.id
-                              this.props.counter.likeState = this.state.sta
-                            }
-                          ) 
-                        }
-                      }
-                    }>
+                    <View className='like' onClick={this.handleLikeClick.bind(this,value)}>
                       {this.state.id.includes(value.id) ? '✔️' : '+'}    
                     </View>
                       
