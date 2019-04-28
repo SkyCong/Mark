@@ -23,7 +23,7 @@ export default class HotMainUI extends Taro.Component {
             return (
               <View key={value.id} className='movie_list'>
                 <View className='movie_img'>
-                  <image src={value.images.small} alt={value.title} />
+                  <image src={value.images.small} alt={value.title} lazy-load={true}/>
                 </View>
                 <View className='movie_content'>
                   <View className='title'>

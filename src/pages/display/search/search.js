@@ -19,14 +19,24 @@ export default class Search extends Taro.Component {
   
 
   config = {
-    navigationBarTitleText: '搜索'
+    navigationBarTitleText: '搜索',
+    onReachBottomDistance: 100
   }
+
+  onReachBottom(){
+    this.setState({
+      page : this.state.page + 1
+    },() => {
+      this.fetchData()
+    })
+  }  
 
   constructor (props) {
     super(props)
     this.state = {
       dis: false,
       del: false,
+      page: 0,
       searchData : [],
       lineData : [],
       val: [],
@@ -35,18 +45,12 @@ export default class Search extends Taro.Component {
     }
   }
 
-  componentDidMount () {
+  componentWillMount () {
+    this.fetchDataLine()
     this.fetchData()
   }
 
   async fetchData(){
-    let line = await http({      
-      // url: 'https://douban.uieee.com/v2/movie/search',
-
-      url: 'http://api.markapp.cn/v160/resources/lines?',
-
-      method : 'GET',
-    })
     let result = await http({      
       // url: 'https://douban.uieee.com/v2/movie/search',
       // url: 'http://t.yushu.im/v2/movie/search', 
@@ -55,20 +59,31 @@ export default class Search extends Taro.Component {
       data: {
         count: 12,
         q: this.state.val,
-        start: 0
+        start: 12*this.state.page
       },
       header:{
         "Content-Type":"json"
       },
       method : 'GET',
     })
-
     this.setState({
-      searchData : result.data.subjects,
-      lineData : line.data.data
+      searchData : [
+        ...this.state.searchData,
+        ...result.data.subjects
+      ]
     })
   }
 
+  async fetchDataLine(){
+    let line = await http({      
+      // url: 'https://douban.uieee.com/v2/movie/search',
+      url: 'http://api.markapp.cn/v160/resources/lines?',
+      method : 'GET',
+    })
+    this.setState({
+      lineData : line.data.data
+    })
+  }
 
   handleChange(val) { 
     if(val === ''){
@@ -139,7 +154,7 @@ export default class Search extends Taro.Component {
   render () {
     
     // console.log(this.props.counter.likeState)
-    // console.log('_________________________')
+    console.log(this.state.val)
     // console.log(this.state.id)
 
     return (
@@ -173,7 +188,7 @@ export default class Search extends Taro.Component {
               this.state.searchData.map(value => {
                 return (
                   <View key={value.id} className='item' onClick={this.handleMoveClick.bind(this,value.id)}> 
-                    <image src={value.images.large} alt={value.alt} />
+                    <image src={value.images.large} alt={value.alt} lazy-load={true}/>
                   
                     <View className='like' onClick={this.handleLikeClick.bind(this,value)}>
                       {this.state.id.includes(value.id) ? '✔️' : '+'}    
@@ -195,37 +210,3 @@ export default class Search extends Taro.Component {
     )
   }
 }
-
-
-// config = {
-//   navigationBarTitleText: 'loading...'
-// }
-
-// state = {
-//   swiperList: [],
-//   detail: {}
-// }
-
-// constructor(props) {
-//   super(props)
-
-//   this.swiperList = []
-// }
-
-// async fetchData() {
-//   let result = await fetch({
-//     url: 'http://localhost:9001/data'
-//   })
-
-//   Taro.setNavigationBarTitle({
-//     title: result.data.name
-//   })value.id === this.state.sta ? '✔️' : '+'
-//indexOf(find,
-
-// {
-                        
-//   this.state.sta.map(values =>{
-    
-//     return(values.id === value.id ? '✔️' : '+')
-//   })
-// }

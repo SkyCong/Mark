@@ -119,7 +119,7 @@ class Discovery extends Component {
                   <image src={value.object.imgUrl} alt={value.object.id} mode='widthFix' lazy-load={true}/>
                   <View className='name'>{value.object.title}</View>
                   <View className='like'>
-                    <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' lazy-load='true' />
+                    <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' />
                     {'100'}
                   </View>         
                 </View>

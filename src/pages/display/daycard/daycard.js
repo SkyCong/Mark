@@ -66,7 +66,7 @@ export default class DayCard extends Taro.Component {
         >
           <SwiperItem >
             <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
+              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' lazy-load={true}/>
               <View className='content'>
                 <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
                 <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>

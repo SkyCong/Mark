@@ -47,7 +47,7 @@ export default class Details extends Taro.Component {
     return (
       <View className='details_wrap'>
         <View className='img'>
-          <image src={detailsData.img_url} alt='img' />
+          <image src={detailsData.img_url} alt='img' lazy-load={true}/>
         </View>
 
         <View className='main'>

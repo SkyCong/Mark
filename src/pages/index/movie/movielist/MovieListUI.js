@@ -33,7 +33,7 @@ export default class MovieListUI extends Taro.Component {
                   url: `/pages/display/details/details?id=${value.id}`
                 })
               }}> 
-                <image src={value.images.large} alt={value.alt} />
+                <image src={value.images.large} alt={value.alt} lazy-load={true}/>
                 <View className='text'>
                   {value.title}
                 </View>

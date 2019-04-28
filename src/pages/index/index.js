@@ -20,7 +20,6 @@ class Index extends Component {
     onReachBottomDistance: 100
   }
   
-
   constructor(props){
     super(props)
     this.state = {
@@ -32,12 +31,13 @@ class Index extends Component {
 
   
   onReachBottom(){
-    this.setState({
-      page : this.state.page + 1
-    },() => {
-      this.fetchData()
-    })
-    console.log(this.state.page)
+    if(this.state.current === 0){
+      this.setState({
+        page : this.state.page + 1
+      },() => {
+        this.fetchData()
+      })      
+    }
   }  
 
   componentWillMount(){
