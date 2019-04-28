@@ -20,8 +20,7 @@ export default class ClassDisplay extends Taro.Component {
   componentWillMount () {
     this.fetchData()
   }
-
-
+  
   async fetchData(){
 
     let resultList = await http({

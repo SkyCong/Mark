@@ -1,6 +1,6 @@
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Swiper, SwiperItem} from '@tarojs/components'
+import { View, Swiper, SwiperItem} from '@tarojs/components'
 import http from '../../../utils/fetch'
 
 
@@ -16,17 +16,14 @@ class Discovery extends Component {
   constructor(props){
     super(props)
     this.state = {
-      bannerData : [],
-      listData: [],
-      page: 1
+      bannerData : []
     }
   }
 
+
   componentWillMount () {
     this.fetchData()
-    this.fetchDataSet()
   }
-
 
   async fetchData(){
     let result = await http({
@@ -50,19 +47,6 @@ class Discovery extends Component {
       bannerData : result.data.data,
     })
 
-  }
-
-
-
-  async fetchDataSet(){
-    let result = await http({
-      url: `https://www.moviebase.cn/uread/api/v3/topic/content?containerId=c2dd0064cd5e49718b161f34f0baab29&pageContext=${this.state.page}`,
-      method : 'GET'
-    })
-    
-    this.setState({
-      listData : result.data.contentList
-    })
   }
 
   render () {
@@ -128,7 +112,7 @@ class Discovery extends Component {
 
         <View className='findWrap'>
           {
-            this.state.listData.map((value) => {
+            (this.props.listData || []).map((value) => {
               return (
                 <View key={value.pubDate} className="findList">
                   <View className='hr'></View>
