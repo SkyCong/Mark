@@ -19,32 +19,34 @@ export default class DayCard extends Taro.Component {
     this.state = {
 
     }
-    this.fetchData()
   }
+  // componentWillMount () {
+  //   this.fetchData()
+  // }
 
-  async fetchData(){
-    let resultIng = await http({
-      url: 'http://api.markapp.cn/v160/movies/intheaters',
-      method : 'GET'
-    })
-    let resultAfter = await http({
-      url: 'https://www.skycong.xyz/v2/movie/coming_soon',
-      data: {
-        apikey: '0b2bdeda43b5688921839c8ecb20399b',
-        start: 0,
-      },
-      header:{
-        "Content-Type":"json"
-      },
-      method : 'GET'
-    })    
+  // async fetchData(){
+  //   let resultIng = await http({
+  //     url: 'http://api.markapp.cn/v160/movies/intheaters',
+  //     method : 'GET'
+  //   })
+  //   let resultAfter = await http({
+  //     url: 'https://www.skycong.xyz/v2/movie/coming_soon',
+  //     data: {
+  //       apikey: '0b2bdeda43b5688921839c8ecb20399b',
+  //       start: 0,
+  //     },
+  //     header:{
+  //       "Content-Type":"json"
+  //     },
+  //     method : 'GET'
+  //   })    
 
-    this.setState({
-      ingData : resultIng.data.subjects,
-      afterData: resultAfter.data.subjects
-    })
+  //   this.setState({
+  //     ingData : resultIng.data.subjects,
+  //     afterData: resultAfter.data.subjects
+  //   })
 
-  }
+  // }
 
   handleClick (value) {
     this.setState({
@@ -54,7 +56,7 @@ export default class DayCard extends Taro.Component {
   
   render () {
     return (
-      <View id='daycard_wrap'>
+      <View className='daycard_wrap'>
         <Swiper
             className='card_list'
             indicatorColor='#999'

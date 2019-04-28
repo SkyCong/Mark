@@ -33,6 +33,9 @@ export default class Search extends Taro.Component {
       sta: this.props.counter.likeState,
       id: this.props.counter.id
     }
+  }
+
+  componentDidMount () {
     this.fetchData()
   }
 

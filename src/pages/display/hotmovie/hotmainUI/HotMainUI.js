@@ -19,7 +19,7 @@ export default class HotMainUI extends Taro.Component {
     return (
       <View className='main_wrap'>
         {
-          this.props.Data.map(value => {
+          (this.props.Data || []).map(value => {
             return (
               <View key={value.id} className='movie_list'>
                 <View className='movie_img'>

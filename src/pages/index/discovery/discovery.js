@@ -17,40 +17,52 @@ class Discovery extends Component {
     super(props)
     this.state = {
       bannerData : [],
-      listData: []
+      listData: [],
+      page: 1
     }
-    this.fetchData()
   }
 
-  random(lower, upper) {
-    return Math.floor(Math.random() * (upper - lower)) + lower;
+  componentWillMount () {
+    this.fetchData()
+    this.fetchDataSet()
   }
-  //调用：console.log(random(1,100));
+
 
   async fetchData(){
     let result = await http({
       url: 'http://api.markapp.cn/v160/singles/banner',
       method : 'GET'
     })
-    // let resultList = await http({
-    //   url: 'https://hongye567.github.io/static/json/articles',
-    //   method : 'GET',
+    // let res = await http({
+    //   url: 'http://api.markapp.cn/mark_web/singles/detail',
+    //   method : 'POST',
     //   data: {
-    //     count: 10,
-    //     start: 0
-    //   }
+    //     id: 1684,
+    //     muid: 'ppuCgPJ6/OXUEa000SjtiQ==',
+    //     uid: 832059,
+        
+    //   },
+    //   // header:{
+    //   //   "Content-Type":"multipart/form-data"
+    //   // },
     // })
-    let resultList = await http({
-      url: 'http://localhost:9000/data',
-      method : 'GET'
-    })
-    // console.log(resultList.data)
-    let rem = 
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data.slice(10,20)
     })
 
+  }
+
+
+
+  async fetchDataSet(){
+    let result = await http({
+      url: `https://www.moviebase.cn/uread/api/v3/topic/content?containerId=c2dd0064cd5e49718b161f34f0baab29&pageContext=${this.state.page}`,
+      method : 'GET'
+    })
+    
+    this.setState({
+      listData : result.data.contentList
+    })
   }
 
   render () {
@@ -80,7 +92,7 @@ class Discovery extends Component {
           this.state.bannerData.map((value) => {
               return (
                 <SwiperItem key={value.id} >
-                  <image src={value.img_url} alt={value.name} mode='widthFix' className='bbb'/>
+                  <image src={value.img_url} alt={value.name} mode='widthFix' />
                 </SwiperItem>
               )
             })
@@ -118,13 +130,13 @@ class Discovery extends Component {
           {
             this.state.listData.map((value) => {
               return (
-                <View key={value.id} className="findList">
+                <View key={value.pubDate} className="findList">
                   <View className='hr'></View>
-                  <image src={value.img_url} alt={value.name} mode='widthFix' />
-                  <View className='name'>{value.name}</View>
+                  <image src={value.object.imgUrl} alt={value.object.id} mode='widthFix' lazy-load={true}/>
+                  <View className='name'>{value.object.title}</View>
                   <View className='like'>
                     <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' lazy-load='true' />
-                    {value.likes}
+                    {'100'}
                   </View>         
                 </View>
               )

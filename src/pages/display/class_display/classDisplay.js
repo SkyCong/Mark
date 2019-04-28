@@ -15,22 +15,15 @@ export default class ClassDisplay extends Taro.Component {
     this.state={
       itemData : []
     }
+  }
+
+  componentWillMount () {
     this.fetchData()
   }
 
 
   async fetchData(){
-    // let resultList = await http({
-    //   url: 'http://api.markapp.cn/v160/singles/list',
-    //   method : 'POST',
-    //   data: {
-    //     muid:	'ppuCgPJ6/OXUEa000SjtiQ==',
-    //     uid:	832059,
-    //     count: 10,
-    //     start: 0
-    //   },
-    //   credentials : 'include'
-    // })
+
     let resultList = await http({
       url: 'http://localhost:9000/data',
       method : 'GET'

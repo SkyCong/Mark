@@ -8,7 +8,7 @@ export default class Setting extends Taro.Component {
   }
 
   constructor (props) {
-    super(props)
+    super(props)  
   }
 
   componentWillMount () {}
