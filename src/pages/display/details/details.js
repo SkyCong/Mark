@@ -43,7 +43,6 @@ export default class Details extends Taro.Component {
   }
   
   render () {
-    console.log(this.state.detailsData)
     return (
       <View className='details_wrap'>
         <View className='img'>

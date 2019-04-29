@@ -22,13 +22,14 @@ export default class Search extends Taro.Component {
     onReachBottomDistance: 100
   }
 
-  onReachBottom(){
+  onReachBottom = _.debounce(() => {
     this.setState({
       page : this.state.page + 1
     },() => {
       this.fetchData()
     })
-  }  
+    // input防抖
+  }, 600)
 
   constructor (props) {
     super(props)
@@ -78,8 +79,6 @@ export default class Search extends Taro.Component {
         ]
       })      
     }
-    console.log(this.state.searchData)
-
   }
 
   async fetchDataLine(){
@@ -95,24 +94,21 @@ export default class Search extends Taro.Component {
 
   handleChange = _.debounce((val) => {
     if(val === ''){
-      console.log('if')
       this.setState({
         dis : false,
         del : false
       })
     } 
     else{
-      console.log('else')
       this.setState({
         val ,
         dis : true,
         del : true
       },() => {
-        console.log(val)
         this.fetchData()
       })
     }
-    // 没有 action 按钮情况下使用
+    // input防抖
   }, 500)
 
  
@@ -165,10 +161,6 @@ export default class Search extends Taro.Component {
   }
 
   render () {
-    
-    // console.log(this.props.counter.likeState)
-    // console.log(this.state.val)
-    // console.log(this.state.id)
 
     return (
       <View id='search_wrap'>
@@ -204,10 +196,9 @@ export default class Search extends Taro.Component {
                     <image src={value.images.large} alt={value.alt} lazy-load={true}/>
                   
                     <View className='like' onClick={this.handleLikeClick.bind(this,value)}>
-                      {this.state.id.includes(value.id) ? '✔️' : '+'}    
+                      {this.state.id.includes(value.id) ? '✓' : '+'}    
                     </View>
                       
-
                     <View className='text'>
                       {value.title}
                     </View>
