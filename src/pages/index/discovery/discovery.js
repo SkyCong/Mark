@@ -1,6 +1,6 @@
 import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Swiper, SwiperItem} from '@tarojs/components'
+import { View, Swiper, SwiperItem} from '@tarojs/components'
 import http from '../../../utils/fetch'
 
 
@@ -16,39 +16,35 @@ class Discovery extends Component {
   constructor(props){
     super(props)
     this.state = {
-      bannerData : [],
-      listData: []
+      bannerData : []
     }
-    this.fetchData()
   }
 
-  random(lower, upper) {
-    return Math.floor(Math.random() * (upper - lower)) + lower;
+
+  componentWillMount () {
+    this.fetchData()
   }
-  //调用：console.log(random(1,100));
 
   async fetchData(){
     let result = await http({
       url: 'http://api.markapp.cn/v160/singles/banner',
       method : 'GET'
     })
-    // let resultList = await http({
-    //   url: 'https://hongye567.github.io/static/json/articles',
-    //   method : 'GET',
+    // let res = await http({
+    //   url: 'http://api.markapp.cn/mark_web/singles/detail',
+    //   method : 'POST',
     //   data: {
-    //     count: 10,
-    //     start: 0
-    //   }
+    //     id: 1684,
+    //     muid: 'ppuCgPJ6/OXUEa000SjtiQ==',
+    //     uid: 832059,
+        
+    //   },
+    //   // header:{
+    //   //   "Content-Type":"multipart/form-data"
+    //   // },
     // })
-    let resultList = await http({
-      url: 'http://localhost:9000/data',
-      method : 'GET'
-    })
-    // console.log(resultList.data)
-    let rem = 
     this.setState({
       bannerData : result.data.data,
-      listData : resultList.data.slice(10,20)
     })
 
   }
@@ -80,7 +76,7 @@ class Discovery extends Component {
           this.state.bannerData.map((value) => {
               return (
                 <SwiperItem key={value.id} >
-                  <image src={value.img_url} alt={value.name} mode='widthFix' className='bbb'/>
+                  <image src={value.img_url} alt={value.name} mode='widthFix' />
                 </SwiperItem>
               )
             })
@@ -116,15 +112,15 @@ class Discovery extends Component {
 
         <View className='findWrap'>
           {
-            this.state.listData.map((value) => {
+            (this.props.listData || []).map((value) => {
               return (
-                <View key={value.id} className="findList">
+                <View key={value.pubDate} className="findList">
                   <View className='hr'></View>
-                  <image src={value.img_url} alt={value.name} mode='widthFix' />
-                  <View className='name'>{value.name}</View>
+                  <image src={value.object.imgUrl} alt={value.object.id} mode='widthFix' lazy-load={true}/>
+                  <View className='name'>{value.object.title}</View>
                   <View className='like'>
-                    <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' lazy-load='true' />
-                    {value.likes}
+                    <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' />
+                    {'100'}
                   </View>         
                 </View>
               )

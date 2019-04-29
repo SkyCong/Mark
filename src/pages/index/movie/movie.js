@@ -3,8 +3,6 @@ import { View } from '@tarojs/components'
 import { AtTabBar }  from 'taro-ui'
 import { MovieListUI } from './movielist/MovieListUI'
 
-import http from '../../../utils/fetch'
-
 import './movie.scss'
 
 
@@ -30,20 +28,23 @@ export default class HotMovie extends Taro.Component {
   render () {
     return (
       <View className='movie_wrap'>
-        <AtTabBar
-          className='check'
-          selectedColor={'#000'}
-          color={'#496069'}
-          tabList={[
-            { title: '想看' },
-            { title: '已看' }
-          ]}
-          onClick={this.handleClick.bind(this)}
-          current={this.state.current}
-        />
-        <View className='tips'>
-          <View className={`hover ${this.state.current === 0 ?'hover_left' : 'hover_right'}`}></View>
+        <View className='head'>
+          <AtTabBar
+              className='check'
+              selectedColor={'#000'}
+              color={'#496069'}
+              tabList={[
+                { title: '想看' },
+                { title: '已看' }
+              ]}
+              onClick={this.handleClick.bind(this)}
+              current={this.state.current}
+            />
+          <View className='tips'>
+            <View className={`hover ${this.state.current === 0 ?'hover_left' : 'hover_right'}`}></View>
+          </View>
         </View>
+        
         { 
           this.state.current === 0 
           ? 

@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtTabBar } from 'taro-ui'
 
+import http from '../../utils/fetch'
+
 // import { Search } from '../search'
 
 import { Discovery } from './discovery/discovery'
@@ -14,19 +16,47 @@ import './index.scss'
 
 class Index extends Component {
 
-
-  state = {
-    current : 0
+  config = {
+    onReachBottomDistance: 100
   }
-  // componentWillReceiveProps (nextProps) {
-  //   console.log(this.props, nextProps)
-  // }
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      current : 0,
+      page: 1,
+      listData: []
+    }
+  }
 
-  // componentWillUnmount () { }
+  
+  onReachBottom(){
+    if(this.state.current === 0){
+      this.setState({
+        page : this.state.page + 1
+      },() => {
+        this.fetchData()
+      })      
+    }
+  }  
 
-  // componentDidShow () { }
+  componentWillMount(){
+    this.fetchData()
+  }
 
-  // componentDidHide () { }
+  async fetchData(){
+    let result = await http({
+      url: `https://www.moviebase.cn/uread/api/v3/topic/content?containerId=c2dd0064cd5e49718b161f34f0baab29&pageContext=${this.state.page}`,
+      method : 'GET'
+    })
+    
+    this.setState({
+      listData : [
+        ...this.state.listData,
+        ...result.data.contentList
+      ]
+    })
+  }
 
   handleClick(current){
     this.setState({
@@ -43,7 +73,7 @@ class Index extends Component {
     return (
 
       <View>
-        { this.state.current === 0 && <Discovery />}
+        { this.state.current === 0 && <Discovery page={this.state.page} listData={this.state.listData}/>}
         { this.state.current === 1 && <Movie />}
         { this.state.current === 2 && <Setting />}
         <AtTabBar

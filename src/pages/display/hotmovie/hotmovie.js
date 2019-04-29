@@ -21,6 +21,9 @@ export default class HotMovie extends Taro.Component {
       ingData : [],
       afterData : []
     }
+  }
+
+  componentWillMount () {
     this.fetchData()
   }
 
@@ -56,7 +59,7 @@ export default class HotMovie extends Taro.Component {
   
   render () {
     return (
-      <View id='hot_wrap'>
+      <View className='hot_wrap'>
         <AtTabBar
           className='check'
           selectedColor={'#000'}

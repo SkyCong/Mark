@@ -14,6 +14,9 @@ export default class Class extends Taro.Component {
     this.state = {
       navData : []
     }
+  }
+
+  componentWillMount () {
     this.fetchData()
   }
 
@@ -50,7 +53,7 @@ export default class Class extends Taro.Component {
   render () {
     // console.log(this.state.navData)
     return (
-      <View id='class_wrap'>
+      <View className='class_wrap'>
         {
           this.state.navData.map(value => {
             return (
