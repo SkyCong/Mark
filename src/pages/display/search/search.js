@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import http from '../../../utils/fetch'
 import { AtInput }  from 'taro-ui'
 import { connect } from '@tarojs/redux'
+import _ from 'lodash'
 
 import './search.scss'
 
@@ -15,8 +16,6 @@ import './search.scss'
 }))
 
 export default class Search extends Taro.Component {
-
-  
 
   config = {
     navigationBarTitleText: '搜索',
@@ -54,7 +53,6 @@ export default class Search extends Taro.Component {
     let result = await http({      
       // url: 'https://douban.uieee.com/v2/movie/search',
       // url: 'http://t.yushu.im/v2/movie/search', 
-
       url: 'https://www.skycong.xyz/v2/movie/search',
       data: {
         count: 12,
@@ -66,12 +64,22 @@ export default class Search extends Taro.Component {
       },
       method : 'GET',
     })
-    this.setState({
-      searchData : [
-        ...this.state.searchData,
-        ...result.data.subjects
-      ]
-    })
+
+    if(this.state.page === 0){
+      this.setState({
+        searchData : result.data.subjects
+      })   
+    }
+    else{
+      this.setState({
+        searchData : [
+          ...this.state.searchData,
+          ...result.data.subjects
+        ]
+      })      
+    }
+    console.log(this.state.searchData)
+
   }
 
   async fetchDataLine(){
@@ -85,23 +93,29 @@ export default class Search extends Taro.Component {
     })
   }
 
-  handleChange(val) { 
+  handleChange = _.debounce((val) => {
     if(val === ''){
+      console.log('if')
       this.setState({
         dis : false,
         del : false
       })
     } 
     else{
+      console.log('else')
       this.setState({
         val ,
         dis : true,
         del : true
       },() => {
+        console.log(val)
         this.fetchData()
       })
     }
-  }
+    // 没有 action 按钮情况下使用
+  }, 500)
+
+ 
 
   handleClick() { 
     this.setState({
@@ -121,7 +135,6 @@ export default class Search extends Taro.Component {
     e.stopPropagation()
     var index = this.state.id.indexOf(value.id)
 
-    console.log(index)
     if(index === -1){
       this.setState({
         sta : [
@@ -154,7 +167,7 @@ export default class Search extends Taro.Component {
   render () {
     
     // console.log(this.props.counter.likeState)
-    console.log(this.state.val)
+    // console.log(this.state.val)
     // console.log(this.state.id)
 
     return (
@@ -185,7 +198,7 @@ export default class Search extends Taro.Component {
 
           <View className={`search_data ${dis === false ? 'hide' : ''}`}>
             {
-              this.state.searchData.map(value => {
+              (this.state.searchData || []).map(value => {
                 return (
                   <View key={value.id} className='item' onClick={this.handleMoveClick.bind(this,value.id)}> 
                     <image src={value.images.large} alt={value.alt} lazy-load={true}/>
