@@ -20,9 +20,9 @@ export default class DayCard extends Taro.Component {
     this.state = {
       cardData: []
     }
-    this.fetchData()
   }
   componentWillMount () {
+    this.fetchData()
   }
 
   async fetchData(){
@@ -47,9 +47,6 @@ export default class DayCard extends Taro.Component {
       <View className='daycard_wrap'>
         <Swiper
             className='card_list'
-            indicatorColor='#999'
-            indicatorActiveColor='#333'
-            indicatorDots
         >
          {
           (this.state.cardData || []).map(value => {

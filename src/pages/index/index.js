@@ -67,9 +67,7 @@ class Index extends Component {
     })
   }
 
-  main(){
-    console.log('mamama')
-  }
+
   render () {
 
     return (
