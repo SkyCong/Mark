@@ -23,7 +23,7 @@ export default class Class extends Taro.Component {
   async fetchData(){
     let that = this
     await http({
-      url: 'http://api.markapp.cn/v160/singles/groupcat',
+      url: 'https://www.skycong.xyz/mark/v160/singles/groupcat',
       method : 'GET'
     })
     .then(result => {

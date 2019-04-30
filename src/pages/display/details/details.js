@@ -21,7 +21,7 @@ export default class Details extends Taro.Component {
 
   async fetchData(){
     let detailsData = await http({
-      url: `http://api.markapp.cn/v160/Mobile/movies/${this.$router.params.id}`,
+      url: `https://www.skycong.xyz/mark/v160/Mobile/movies/${this.$router.params.id}`,
       method : 'GET'
     })  
     this.setState({

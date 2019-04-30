@@ -28,7 +28,7 @@ export default class DayCard extends Taro.Component {
   async fetchData(){
     let that =this
     await http({
-      url: 'https://api.myjson.com/bins/1cb4p4',
+      url: 'https://www.skycong.xyz/api/bins/1cb4p4',
       method : 'GET'
     })
     .then(result => {

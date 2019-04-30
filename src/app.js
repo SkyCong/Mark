@@ -26,6 +26,7 @@ class App extends Component {
       "pages/display/daycard/daycard",
       "pages/display/hotmovie/hotmovie",
       "pages/display/class_display/classDisplay",
+      "pages/display/index_detais/indexDetails",
       "pages/display/details/details",
     ],
     window: {

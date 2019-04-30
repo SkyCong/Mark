@@ -46,7 +46,16 @@ class Index extends Component {
 
   async fetchData(){
     let result = await http({
-      url: `https://www.moviebase.cn/uread/api/v3/topic/content?containerId=c2dd0064cd5e49718b161f34f0baab29&pageContext=${this.state.page}`,
+      // url: `https://www.moviebase.cn/uread/api/v3/topic/content?containerId=c2dd0064cd5e49718b161f34f0baab29&pageContext=${this.state.page}`,
+      url: 'https://www.moviebase.cn/uread/api/v3/channel/contents',
+      data: {
+        containerId: 12,
+        pageContext: this.state.page,
+        platform: 1,
+        deviceId: 'AD3E5F1B-9B0C-4DC4-BDBC-59EF431C2D29',
+        appVersion: '3.5.0'    
+      },
+      
       method : 'GET'
     })
     

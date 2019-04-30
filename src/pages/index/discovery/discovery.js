@@ -27,7 +27,7 @@ class Discovery extends Component {
 
   async fetchData(){
     let result = await http({
-      url: 'http://api.markapp.cn/v160/singles/banner',
+      url: 'https://www.skycong.xyz/mark/v160/singles/banner',
       method : 'GET'
     })
     // let res = await http({
@@ -114,7 +114,11 @@ class Discovery extends Component {
           {
             (this.props.listData || []).map((value) => {
               return (
-                <View key={value.pubDate} className="findList">
+                <View key={value.pubDate} className="findList" onClick={ () => {
+                  Taro.navigateTo({
+                    url: `/pages/display/index_detais/indexDetails?id=${value.object.id}`
+                  })
+                }}> 
                   <View className='hr'></View>
                   <image src={value.object.imgUrl} alt={value.object.id} mode='widthFix' lazy-load={true}/>
                   <View className='name'>{value.object.title}</View>
