@@ -32,9 +32,6 @@ export default class MovieListUI extends Taro.Component {
           <View className='click'>
             你可以点击右上角的搜索按钮添加想看的电影
           </View>
-          <Button className='login' open-type="getUserInfo" onGetuserinfo={this.getUserInfo.bind(this)}>
-            授权登录
-          </Button>  
         </View>
         <View className='movie_data'>
           {

@@ -4,6 +4,7 @@ import { connect } from '@tarojs/redux'
 
 import './splash.scss'
 import { setBasicInfo } from '../../actions/counter'
+import { func } from 'prop-types';
 
 @connect(({ counter }) => ({
   counter
@@ -20,15 +21,21 @@ class Splash extends Component {
 
   constructor (props) {
     super(props)
-    
+    // wx.getSetting({
+    //   success() {
+    //     Taro.redirectTo({
+    //       url: '/pages/index/index'
+    //     })
+    //   },
+    //   fail() {
+    //     this.getUserInfo()
+    //   }
+    // })
   }
   componentWillMount () {
-    // if(this.props.counter)
-    // Taro.navigateTo({
-    //   url: '/pages/index/index'
-    // })
-    
+
   }
+  
   getUserInfo = (userInfo) => {
     if(userInfo.detail.userInfo){   //同意
       
