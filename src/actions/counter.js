@@ -10,17 +10,9 @@ export const like = () => {
 }
 
 export const setBasicInfo  = (param) => {
-  // console.log('222',param)
+  console.log('222',param)
   return {
       type: BASICINFO,
       payload: param
   }
 }
-// // 异步的action
-// export function asyncAdd () {
-//   return dispatch => {
-//     setTimeout(() => {
-//       dispatch(add())
-//     }, 2000)
-//   }
-// }

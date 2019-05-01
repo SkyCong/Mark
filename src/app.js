@@ -32,7 +32,7 @@ class App extends Component {
       "pages/display/class_display/classDisplay",
       "pages/display/index_detais/indexDetails",
       "pages/display/details/details",
-      "pages/components/webview"
+      // "pages/components/webview"
     ],
     window: {
       navigationBarTitleText: '发现',
@@ -54,7 +54,6 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <Splash />
         <Index />
       </Provider>
     )

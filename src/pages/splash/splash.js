@@ -13,21 +13,29 @@ import { setBasicInfo } from '../../actions/counter'
   },
 }))
 
-export default class Splash extends Component {
+class Splash extends Component {
   config = {
     navigationBarTitleText: 'SKY_Mark'
   }
 
   constructor (props) {
     super(props)
+    
   }
   componentWillMount () {
-
+    // if(this.props.counter)
+    // Taro.navigateTo({
+    //   url: '/pages/index/index'
+    // })
+    
   }
   getUserInfo = (userInfo) => {
     if(userInfo.detail.userInfo){   //同意
-        this.props.setBasicInfo(userInfo.detail.userInfo) //将用户信息存入redux
-        Taro.navigateTo({
+      
+      this.props.counter.basicinfo = userInfo.detail.userInfo
+      
+      // this.props.setBasicInfo(userInfo.detail.userInfo) //将用户信息存入redux
+        Taro.redirectTo({
           url: '/pages/index/index'
         })
     } 
@@ -35,19 +43,15 @@ export default class Splash extends Component {
        console.log('jujue')
     }
   }
-  lgClick(){
-    Taro.navigateTo({
-      url: '/pages/index/index'
-    })  
-  }
+
 
   render () {
+    console.log(this.props.counter)
     return (
       <View className='aplash_wrap'> 
         <image src={require('../../assets/login_bg.jpg')} alt='bg' mode='widthFix'/>
         <View className='logo'>
           <image src={require('../../assets/logo_bg.png')} alt='logo'/>
-          {/* onGetUserInfo */}
           <Button className='login' open-type="getUserInfo" onGetuserinfo={this.getUserInfo}>
             授权登录
           </Button>  
@@ -56,3 +60,5 @@ export default class Splash extends Component {
     )
   }
 }
+
+export default Splash

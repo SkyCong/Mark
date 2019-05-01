@@ -15,13 +15,12 @@ export default function counter (state = INITIAL_STATE, action) {
         ...state,
       }    
     case BASICINFO:
-      console.log('i am here',action)
+      // console.log('i am here',action)
       return {
           ...state,
           basicinfo: action.payload
       }
-
-    default:
+  default:
       return state
-  }
+}
 }

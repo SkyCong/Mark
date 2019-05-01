@@ -24,7 +24,7 @@ export default class Setting extends Taro.Component {
   constructor (props) {
     super(props)  
     this.state = {
-      userInfo: []
+      userInfo: this.props.counter.basicinfo
     }
   }
 
@@ -45,7 +45,7 @@ export default class Setting extends Taro.Component {
         
         <View className='header list'>
           <AtAvatar image={this.state.userInfo.avatarUrl} circle={true} ></AtAvatar>
-          <text>聪聪0501</text>
+          <text>{this.state.userInfo.nickName}</text>
           <View className='right'>
             <image src={require('../../../assets/right_arrow.png')} alt='right' />
           </View>
