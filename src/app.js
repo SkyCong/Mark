@@ -20,6 +20,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/splash/splash',
       'pages/index/index',
       'pages/display/search/search',
       "pages/display/class/class",
