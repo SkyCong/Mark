@@ -29,13 +29,14 @@ export default class HotMovie extends Taro.Component {
 
   async fetchData(){
     let resultIng = await http({
-      url: 'http://api.markapp.cn/v160/movies/intheaters',
+      url: 'https://www.skycong.xyz/mark/v160/movies/intheaters',
       method : 'GET'
     })
     let resultAfter = await http({
-      url: 'https://www.skycong.xyz/v2/movie/coming_soon',
+      url: 'https://douban.uieee.com/v2/movie/coming_soon',
+
+      // url: 'https://www.skycong.xyz/v2/movie/coming_soon',
       data: {
-        apikey: '0b2bdeda43b5688921839c8ecb20399b',
         start: 0,
       },
       header:{

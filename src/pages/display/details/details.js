@@ -21,7 +21,7 @@ export default class Details extends Taro.Component {
 
   async fetchData(){
     let detailsData = await http({
-      url: `http://api.markapp.cn/v160/Mobile/movies/${this.$router.params.id}`,
+      url: `https://www.skycong.xyz/mark/v160/Mobile/movies/${this.$router.params.id}`,
       method : 'GET'
     })  
     this.setState({
@@ -43,7 +43,6 @@ export default class Details extends Taro.Component {
   }
   
   render () {
-    console.log(this.state.detailsData)
     return (
       <View className='details_wrap'>
         <View className='img'>

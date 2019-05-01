@@ -1,7 +1,8 @@
 import Taro from '@tarojs/taro'
 import { View , Swiper, SwiperItem } from '@tarojs/components'
 import { AtTabBar }  from 'taro-ui'
-import { HotMainUI } from './hotmainUI/HotMainUI'
+
+import _ from 'lodash'
 
 import http from '../../../utils/fetch'
 
@@ -17,107 +18,69 @@ export default class DayCard extends Taro.Component {
   constructor (props) {
     super(props)
     this.state = {
-
+      cardData: []
     }
   }
-  // componentWillMount () {
-  //   this.fetchData()
-  // }
+  componentWillMount () {
+    this.fetchData()
+  }
 
-  // async fetchData(){
-  //   let resultIng = await http({
-  //     url: 'http://api.markapp.cn/v160/movies/intheaters',
-  //     method : 'GET'
-  //   })
-  //   let resultAfter = await http({
-  //     url: 'https://www.skycong.xyz/v2/movie/coming_soon',
-  //     data: {
-  //       apikey: '0b2bdeda43b5688921839c8ecb20399b',
-  //       start: 0,
-  //     },
-  //     header:{
-  //       "Content-Type":"json"
-  //     },
-  //     method : 'GET'
-  //   })    
-
-  //   this.setState({
-  //     ingData : resultIng.data.subjects,
-  //     afterData: resultAfter.data.subjects
-  //   })
-
-  // }
-
-  handleClick (value) {
-    this.setState({
-      current: value
+  async fetchData(){
+    let that =this
+    await http({
+      url: 'https://www.skycong.xyz/api/bins/1cb4p4',
+      method : 'GET'
+    })
+    .then(result => {
+      that.cardData(result.data.data)
     })
   }
-  
+
+  cardData(res) {
+    this.setState({
+      cardData: _.sampleSize(res,6)
+    })     
+  }
+
   render () {
     return (
       <View className='daycard_wrap'>
         <Swiper
             className='card_list'
-            indicatorColor='#999'
-            indicatorActiveColor='#333'
-            indicatorDots
-            onChange="aaa"
         >
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' lazy-load={true}/>
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-          
-
-
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-
-
-
-
-          <SwiperItem >
-            <View className='card'>
-              <image src={require('../../../assets/movie_search_word_icon.png')} alt='icon' />
-              <View className='content'>
-                <View className='textC'>生活就像一盒巧永远不知道你会得克力，你永远不知道你会得到什么。</View>
-                <View className='textE'>生活巧克力，你永远不知道你巧克力，你永远不知道你会会就像一盒巧克力，你永远不知道你会得到什么。</View>
-                <View className='textend'>---《阿甘正传》</View>
-              </View>
-            </View>
-          </SwiperItem>
-
-
-
+         {
+          (this.state.cardData || []).map(value => {
+              return (
+                <SwiperItem key={value.id}>
+                  <View className='card'>
+                    <image src={value.img_url} alt='icon' lazy-load={true}/>
+                    <View className='content'>
+                      <View className='textC'>{value.content}</View>
+                      <View className='textend'>——{value.name}</View>
+                    </View>
+                  </View>
+                </SwiperItem>
+              )
+            }
+          )           
+         }
         </Swiper>
 
         <View className='operation'>
 
           <View className='see_movie'>
-
+            <image src={require('../../../assets/daily_card_detail_icon.png')} alt='icon1' />
+            查看电影
           </View>
 
-          <View className='like_movie'>
-
+          <View className='share_movie icon_movie'>
+            <image src={require('../../../assets/daily_card_share_icon.png')} alt='icon3' />
+            喜欢
           </View>
 
-          <View className='share_movie'>
-
+          <View className='like_movie icon_movie'>
+            <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon2' />
+            分析
           </View>
         </View>
 

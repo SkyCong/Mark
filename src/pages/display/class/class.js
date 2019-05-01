@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import http from '../../../utils/fetch'
 
 import './class.scss'
@@ -22,8 +22,8 @@ export default class Class extends Taro.Component {
 
   async fetchData(){
     let that = this
-    let result = await http({
-      url: 'http://api.markapp.cn/v160/singles/groupcat',
+    await http({
+      url: 'https://www.skycong.xyz/mark/v160/singles/groupcat',
       method : 'GET'
     })
     .then(result => {

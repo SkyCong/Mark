@@ -16,20 +16,21 @@
       background: #fff;
       border-radius: 10px;
       box-shadow: 5px 5px 10px #cfd2d4;
-      
       image{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
         width: 100%;
         height: 50%;
-        background: #00f;
         margin-bottom: 28px;
       }
 
       .content{
-        font-size: 30px;
+        font-size: 26px;
         color: #182026;
-        padding: 0 36px;
+        padding: 0 30px;
         .textC{
-          width: 20em;
+          width: 100%;
+          line-height: 1.8em;
         }
         .textE{
           width: 20em;
@@ -37,59 +38,68 @@
         .textend{
           width: 100%;
           text-align: right;
+          padding-right: 16px;
           padding-top: 50px;
         }
       }
     }
-    
-
-
   }
 
 
   .operation{
     width: 100%;
     height: 100px;
-    background: #00f;
     position: fixed;
     bottom: 50px;
     font-weight: bold;
     z-index: 999;
+    font-size: 22px;
+    font-weight: normal;
+    color: #10181e;
+    text-align: center;
     .see_movie{
+      display: flex;
+      float: left;
+      left: 50px;
+      width: 228px;
+      height: 72px;
+      margin-top:18px;
+      border-radius: 40px;
+      background: #e5e6e7;
+      line-height: 72px;
+      image{
+        margin: auto 0 auto 30px;
+        width: 30px;
+        height: 34px;
+        padding-right: 30px;
+      }
+    }
 
+    .icon_movie{
+      display: flex;
+      flex-direction: column;
+      float: right;
+      right: 30px;
+      width: 100px;
+      height: 100px;
+      
+      image{
+        display: block;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+      }
     }
     .like_movie{
-
+      right: 30px;
     }
     .share_movie{
-
+      right: 140px;
     }
+
   }
 }
 
-// <View id='daycard_wrap'>
-
-// <View className='card'>
-
-// </View>
-
-// <View className='operation'>
-
-//   <View className='see_movie'>
-
-//   </View>
-
-//   <View className='like_movie'>
-
-//   </View>
-
-//   <View className='share_movie'>
-
-//   </View>
-// </View>
-
 .at-input{
-
-
   margin-left: 0px !important;
 }

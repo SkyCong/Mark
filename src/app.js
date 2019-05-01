@@ -20,12 +20,14 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/splash/splash',
       'pages/index/index',
       'pages/display/search/search',
       "pages/display/class/class",
       "pages/display/daycard/daycard",
       "pages/display/hotmovie/hotmovie",
       "pages/display/class_display/classDisplay",
+      "pages/display/index_detais/indexDetails",
       "pages/display/details/details",
     ],
     window: {
