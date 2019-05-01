@@ -2,6 +2,8 @@ import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
+
+
 import Index from './pages/index'
 
 import configStore from './store'
@@ -20,7 +22,7 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/splash/splash',
+      // 'pages/splash/splash',
       'pages/index/index',
       'pages/display/search/search',
       "pages/display/class/class",
@@ -29,6 +31,7 @@ class App extends Component {
       "pages/display/class_display/classDisplay",
       "pages/display/index_detais/indexDetails",
       "pages/display/details/details",
+      "pages/components/webview"
     ],
     window: {
       navigationBarTitleText: '发现',

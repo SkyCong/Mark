@@ -13,8 +13,10 @@ export default class Splash extends Taro.Component {
   }
   componentWillMount () {
     setTimeout(() => {
-      console.log('AAAAAAAAAA')
-    },2000)
+      Taro.navigateTo({
+        url: '/pages/index/index/index'
+      })
+    },1600)
   }
 
   // loginCheck(){
