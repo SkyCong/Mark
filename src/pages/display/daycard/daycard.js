@@ -75,12 +75,12 @@ export default class DayCard extends Taro.Component {
 
           <View className='share_movie icon_movie'>
             <image src={require('../../../assets/daily_card_share_icon.png')} alt='icon3' />
-            喜欢
+            分享
           </View>
 
           <View className='like_movie icon_movie'>
             <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon2' />
-            分析
+            喜欢
           </View>
         </View>
 

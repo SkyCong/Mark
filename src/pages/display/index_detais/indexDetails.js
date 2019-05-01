@@ -32,7 +32,7 @@ export default class indexDetails extends Taro.Component {
     this.setState({
       indexDetailsData : result.data.article
     })
-    console.log(result)
+    // console.log(result)
   }
 
   handleLikeClick () {

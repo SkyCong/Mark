@@ -5,6 +5,7 @@ import { Provider } from '@tarojs/redux'
 
 
 import Index from './pages/index'
+import Splash from './pages/splash/splash';
 
 import configStore from './store'
 
@@ -22,7 +23,7 @@ class App extends Component {
 
   config = {
     pages: [
-      // 'pages/splash/splash',
+      'pages/splash/splash',
       'pages/index/index',
       'pages/display/search/search',
       "pages/display/class/class",
@@ -53,6 +54,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
+        <Splash />
         <Index />
       </Provider>
     )

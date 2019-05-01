@@ -1,6 +1,17 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtAvatar } from 'taro-ui'
+import { connect } from '@tarojs/redux'
+
+
+
+@connect(({ counter }) => ({
+  counter
+}), (dispatch) => ({
+  setBasicInfo () {
+    dispatch(setBasicInfo())
+  }
+}))
 
 export default class Setting extends Taro.Component {
 
@@ -8,17 +19,32 @@ export default class Setting extends Taro.Component {
     navigationBarTitleText: '账号'
   }
 
+
+
   constructor (props) {
     super(props)  
+    this.state = {
+      userInfo: []
+    }
   }
 
-  componentWillMount () {}
+
+  componentWillMount () {
+    // this.setState({
+    //   userInfo: this.props.
+    // })
+    // // Taro.getStorage({key:'userInfo'}).then(rst => {   //从缓存中获取用户信息
+    // //   console.log(rst)
+    // // })
+  }
+
   render () {
+    console.log(this.props)
     return (
       <View className='setting_wrap'>
         
         <View className='header list'>
-          <AtAvatar image='https://jdc.jd.com/img/200' circle={true} ></AtAvatar>
+          <AtAvatar image={this.state.userInfo.avatarUrl} circle={true} ></AtAvatar>
           <text>聪聪0501</text>
           <View className='right'>
             <image src={require('../../../assets/right_arrow.png')} alt='right' />
