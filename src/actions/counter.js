@@ -1,5 +1,6 @@
 import {
-  LIKE
+  LIKE,
+  BASICINFO
 } from '../constants/counter'
 
 export const like = () => {
@@ -8,11 +9,10 @@ export const like = () => {
   }
 }
 
-// // 异步的action
-// export function asyncAdd () {
-//   return dispatch => {
-//     setTimeout(() => {
-//       dispatch(add())
-//     }, 2000)
-//   }
-// }
+export const setBasicInfo  = (param) => {
+  console.log('222',param)
+  return {
+      type: BASICINFO,
+      payload: param
+  }
+}

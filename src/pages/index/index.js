@@ -41,6 +41,9 @@ class Index extends Component {
   }  
 
   componentWillMount(){
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     this.fetchData()
   }
 

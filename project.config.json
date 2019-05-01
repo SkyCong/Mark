@@ -4,7 +4,7 @@
 	"description": "Mark xcx text",
 	"appid": "wx3e0fb16791d7b427",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,

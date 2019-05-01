@@ -2,7 +2,10 @@ import '@tarojs/async-await'
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
+
+
 import Index from './pages/index'
+import Splash from './pages/splash/splash';
 
 import configStore from './store'
 
@@ -29,6 +32,7 @@ class App extends Component {
       "pages/display/class_display/classDisplay",
       "pages/display/index_detais/indexDetails",
       "pages/display/details/details",
+      // "pages/components/webview"
     ],
     window: {
       navigationBarTitleText: '发现',
