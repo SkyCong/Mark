@@ -56,7 +56,7 @@ export default class DayCard extends Taro.Component {
                     <image src={value.img_url} alt='icon' lazy-load={true}/>
                     <View className='content'>
                       <View className='textC'>{value.content}</View>
-                      <View className='textend'>———{value.name}</View>
+                      <View className='textend'>——{value.name}</View>
                     </View>
                   </View>
                 </SwiperItem>
