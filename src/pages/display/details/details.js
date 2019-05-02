@@ -122,7 +122,7 @@ export default class Details extends Taro.Component {
                 </View>                 
               </View>  
 
-              <View className='list'>
+              <View className='list last'>
                 {detailsData.summary}               
               </View>  
             </View>
