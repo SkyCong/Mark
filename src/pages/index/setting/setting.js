@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import { AtAvatar } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 
+import './setting.scss'
 
 
 @connect(({ counter }) => ({

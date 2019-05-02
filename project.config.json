@@ -4,11 +4,12 @@
 	"description": "Mark xcx text",
 	"appid": "wx3e0fb16791d7b427",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
-		"minified": false,
+		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true
 	},
