@@ -52,9 +52,9 @@ export default class Search extends Taro.Component {
 
   async fetchData(){
     let result = await http({      
-      url: 'https://douban.uieee.com/v2/movie/search',
+      // url: 'https://douban.uieee.com/v2/movie/search',
       // url: 'http://t.yushu.im/v2/movie/search', 
-      // url: 'https://www.skycong.xyz/v2/movie/search',
+      url: 'https://www.skycong.xyz/db/v2/movie/search',
       data: {
         count: 12,
         q: this.state.val,
