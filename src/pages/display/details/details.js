@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Swiper, SwiperItem  } from '@tarojs/components'
 
 import http from '../../../utils/fetch'
 
@@ -30,42 +30,104 @@ export default class Details extends Taro.Component {
     Taro.setNavigationBarTitle({
       title: detailsData.data.data.name
     })
-
-  }
-
-  handleLikeClick () {
-    // this.setState({
-    //   current: value
-    // })
-    console.log('asd')
-    // <View className='play'></View>
-
   }
   
   render () {
+    let detailsData = this.state.detailsData
+    // console.log(detailsData.photos[0])
     return (
       <View className='details_wrap'>
-        <View className='img'>
-          <image src={detailsData.img_url} alt='img' lazy-load={true}/>
+        <Swiper 
+          className='banner'
+          duration={300}
+          circular
+          autoplay>
+          {
+            detailsData.photos.map((value , index) => {
+              return (
+                <SwiperItem key={index} >
+                  <image src={value} alt='banner' mode='widthFix'/>
+                </SwiperItem>
+              )
+            })
+          }
+        </Swiper>
+
+        <View className='wat'>
+          <View className='like'>
+            想看
+          </View>
         </View>
 
         <View className='main'>
-        {detailsData.casts}
-          <View className='like'>
+          <View className='main'>
+            <View className='header'>
+              概览
+            </View>          
+            <View className='movie_content'>
 
+              <View className='list'>
+                <View className='left'>
+                  上映
+                </View> 
+                <View className='right'>
+                  {detailsData.pubdate}
+                </View>                 
+              </View>     
+
+
+              <View className='list'>
+                <View className='left'>
+                  片长
+                </View> 
+                <View className='right'>
+                  {detailsData.duration}
+                </View>                 
+              </View>     
+
+
+              <View className='list'>
+                <View className='left'>
+                  类型
+                </View> 
+                <View className='right'>
+                  {detailsData.genres}
+                </View>                 
+              </View>     
+
+              <View className='list'>
+                <View className='left'>
+                  导演
+                </View> 
+                <View className='right'>
+                  {detailsData.directors}
+                </View>                 
+              </View>  
+
+              <View className='list'>
+                <View className='left'>
+                  编剧
+                </View> 
+                <View className='right'>
+                  {detailsData.writers}
+                </View>                 
+              </View>  
+
+              <View className='list'>
+                <View className='left'>
+                  主演
+                </View> 
+                <View className='right'>
+                  {detailsData.casts}
+                </View>                 
+              </View>  
+
+              <View className='list last'>
+                {detailsData.summary}               
+              </View>  
+            </View>
           </View>
 
-          <View className='pj'>
-
-          </View>
-
-          <View className='header'>
-
-          </View>
-
-          <View className='movie_content'>
-            
-          </View>
         </View>
 
       </View>

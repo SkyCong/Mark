@@ -33,9 +33,9 @@ export default class HotMovie extends Taro.Component {
       method : 'GET'
     })
     let resultAfter = await http({
-      url: 'https://douban.uieee.com/v2/movie/coming_soon',
+      // url: 'https://douban.uieee.com/v2/movie/coming_soon',
 
-      // url: 'https://www.skycong.xyz/v2/movie/coming_soon',
+      url: 'https://www.skycong.xyz/db/v2/movie/coming_soon',
       data: {
         start: 0,
       },

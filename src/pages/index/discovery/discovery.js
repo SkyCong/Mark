@@ -120,7 +120,7 @@ class Discovery extends Component {
                   })
                 }}> 
                   <View className='hr'></View>
-                  <image src={value.object.imgUrl} alt={value.object.id} mode='widthFix' lazy-load={true}/>
+                  <image src={value.object.imgUrl.slice(0,-4)} alt={value.object.id} mode='widthFix' lazy-load={true}/>
                   <View className='name'>{value.object.title}</View>
                   <View className='like'>
                     <image src={require('../../../assets/daily_card_like_unchecked.png')} alt='icon' mode='widthFix' />
