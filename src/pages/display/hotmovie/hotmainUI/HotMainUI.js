@@ -12,7 +12,11 @@ export default class HotMainUI extends Taro.Component {
     super(props)
   } 
 
-
+  handleMoveClick(id) { 
+    Taro.navigateTo({
+      url: `/pages/display/details/details?id=${id}`
+    })
+  }
 
   render () {
 
@@ -21,10 +25,11 @@ export default class HotMainUI extends Taro.Component {
         {
           (this.props.Data || []).map(value => {
             return (
-              <View key={value.id} className='movie_list'>
+              <View key={value.id} className='movie_list' onClick={this.handleMoveClick.bind(this,value.id)}>
                 <View className='movie_img'>
                   <image src={value.images.small} alt={value.title} lazy-load={true}/>
                 </View>
+                {value.id}
                 <View className='movie_content'>
                   <View className='title'>
                     {value.title}
