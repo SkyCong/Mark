@@ -1,6 +1,8 @@
+const path = require('path')
+
 const config = {
   projectName: 'Mark',
-  date: '2019-4-20',
+  date: '2026-1-1',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,
@@ -9,21 +11,19 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: {
-    babel: {
-      sourceMap: true,
-      presets: [
-        ['env', {
-          modules: false
-        }]
-      ],
-      plugins: [
-        'transform-decorators-legacy',
-        'transform-class-properties',
-        'transform-object-rest-spread'
-      ]
-    }
+  framework: 'vue3',
+  compiler: 'webpack5',
+  cache: {
+    enable: false
   },
+  plugins: [
+    '@tarojs/plugin-framework-vue3',
+    '@tarojs/plugin-platform-alipay',
+    '@tarojs/plugin-platform-tt',
+    '@tarojs/plugin-platform-swan',
+    '@tarojs/plugin-platform-jd',
+    '@tarojs/plugin-platform-qq'
+  ],
   defineConstants: {
   },
   copy: {
@@ -31,6 +31,13 @@ const config = {
     ],
     options: {
     }
+  },
+  sass: {
+    resource: []
+  },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
+    '@/assets': path.resolve(__dirname, '..', 'src', 'assets')
   },
   weapp: {
     module: {
@@ -48,19 +55,19 @@ const config = {
         pxtransform: {
           enable: true,
           config: {
-
+            selectorBlackList: ['nut-']
           }
         },
         url: {
           enable: true,
           config: {
-            limit: 10240 // 设定转换尺寸上限
+            limit: 10240
           }
         },
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: false,
           config: {
-            namingPattern: 'module', // 转换模式，取值为 global/module
+            namingPattern: 'module',
             generateScopedName: '[name]__[local]___[hash:base64:5]'
           }
         }
@@ -83,9 +90,9 @@ const config = {
           }
         },
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: false,
           config: {
-            namingPattern: 'module', // 转换模式，取值为 global/module
+            namingPattern: 'module',
             generateScopedName: '[name]__[local]___[hash:base64:5]'
           }
         }

@@ -1,5 +1,9 @@
-dist/
-.temp/
-.rn_temp/
 node_modules/
+dist/
 .DS_Store
+*.log
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

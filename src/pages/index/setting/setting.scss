@@ -1,4 +1,13 @@
-@import "~taro-ui/dist/style/components/avatar.scss";
+// Avatar styles
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+
+  &--circle {
+    border-radius: 50%;
+  }
+}
 
 .setting_wrap{
   background: #ebebeb;
