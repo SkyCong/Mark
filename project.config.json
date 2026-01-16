@@ -1,20 +1,44 @@
 {
-	"miniprogramRoot": "dist/",
-	"projectname": "Mark",
-	"description": "Mark xcx text",
-	"appid": "wx3e0fb16791d7b427",
-	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"checkInvalidKey": true
-	},
-	"compileType": "miniprogram",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {}
+  "miniprogramRoot": "dist/",
+  "projectname": "Mark",
+  "description": "Mark xcx text",
+  "appid": "wx3e0fb16791d7b427",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "checkInvalidKey": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "enhance": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
 }
