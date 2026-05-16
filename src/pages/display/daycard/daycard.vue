@@ -3,7 +3,7 @@
     <swiper class="card_list">
       <swiper-item v-for="item in cardData" :key="item.id">
         <view class="card">
-          <image :src="item.img_url" alt="icon" :lazy-load="true" />
+          <image :src="item.img_url" alt="icon" mode="aspectFill" :lazy-load="true" />
           <view class="content">
             <view class="textC">{{ item.content }}</view>
             <view class="textend">——{{ item.name }}</view>

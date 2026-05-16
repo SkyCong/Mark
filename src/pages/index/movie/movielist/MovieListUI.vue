@@ -14,7 +14,7 @@
         class="item"
         @click="moveClick(item.id)"
       >
-        <image :src="item.images.large" :alt="item.alt" />
+        <image :src="item.images.large" :alt="item.alt" mode="aspectFill" />
         <view class="text">{{ item.title }}</view>
       </view>
     </view>

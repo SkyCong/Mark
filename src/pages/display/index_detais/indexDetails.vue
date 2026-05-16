@@ -1,7 +1,7 @@
 <template>
   <view class="index_details_wrap">
     <view class="img">
-      <image :src="indexDetailsData.imgUrl" alt="img" />
+      <image :src="indexDetailsData.imgUrl" alt="img" mode="aspectFill" />
     </view>
 
     <view class="main">
@@ -26,10 +26,7 @@
       <view class="footer">
         <view class="head">版权声明</view>
         <view class="texts">未经许可，严谨转载和引用。</view>
-        <image
-          src="http://img.moviebase.cn/img/source/2018/02/c526cc8be95944399a68197c778ee1ab.png@!100"
-          alt="footer"
-        />
+        <image :src="aboutLogo" alt="footer" />
         <view class="tips">巴塞电影</view>
       </view>
     </view>
@@ -40,6 +37,7 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
 import http from '../../../utils/fetch'
+import aboutLogo from '../../../assets/about_logo.png'
 import './indexDetails.scss'
 
 export default defineComponent({
@@ -60,6 +58,9 @@ export default defineComponent({
           method: 'GET'
         })
         indexDetailsData.value = result.data.article
+        Taro.setNavigationBarTitle({
+          title: result.data.article.articleTitle
+        })
       } catch (error) {
         console.error('Fetch index details error:', error)
       }
@@ -70,7 +71,8 @@ export default defineComponent({
     })
 
     return {
-      indexDetailsData
+      indexDetailsData,
+      aboutLogo
     }
   }
 })

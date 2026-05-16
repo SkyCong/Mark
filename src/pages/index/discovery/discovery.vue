@@ -16,7 +16,7 @@
       :autoplay="true"
     >
       <swiper-item v-for="item in bannerData" :key="item.id">
-        <image :src="item.img_url" :alt="item.name" mode="widthFix" />
+        <image :src="item.img_url" :alt="item.name" mode="aspectFill" />
       </swiper-item>
     </swiper>
 
@@ -44,9 +44,9 @@
       >
         <view class="hr"></view>
         <image
-          :src="item.object.imgUrl.slice(0, -4)"
+          :src="item.object.imgUrl"
           :alt="item.object.id"
-          mode="widthFix"
+          mode="aspectFill"
           :lazy-load="true"
         />
         <view class="name">{{ item.object.title }}</view>

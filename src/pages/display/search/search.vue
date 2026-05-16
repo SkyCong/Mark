@@ -26,7 +26,7 @@
           class="item"
           @click="handleMoveClick(item.id)"
         >
-          <image :src="item.images.large" :alt="item.alt" :lazy-load="true" />
+          <image :src="item.images.large" :alt="item.alt" mode="aspectFill" :lazy-load="true" />
           <view class="like" @click.stop="handleLikeClick(item)">
             {{ id.includes(item.id) ? '✓' : '+' }}
           </view>

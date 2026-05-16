@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { getMockResponse } from '../mock/movieData'
 
 export default ({
   url = '',
@@ -6,6 +7,12 @@ export default ({
   data = {},
   header = {}
 }) => {
+  const mockResponse = getMockResponse({ url, data })
+
+  if (mockResponse) {
+    return Promise.resolve(mockResponse)
+  }
+
   return Taro.request({
     url,
     method,

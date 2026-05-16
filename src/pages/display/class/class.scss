@@ -1,6 +1,6 @@
 .class_wrap{
   background: #ebebeb;
-  padding: 12.5px;
+  padding: 16px 12px calc(24px + env(safe-area-inset-bottom));
   .navList{
     margin: 25px 12.5px;
     overflow: hidden;
@@ -40,6 +40,9 @@
       height: 84px;
       text-align: center;
       line-height: 84px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       border-right: 0.5rpx solid #d2d2d2;
       border-bottom: 0.5rpx solid #d2d2d2;
     }

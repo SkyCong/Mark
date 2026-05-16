@@ -1,4 +1,4 @@
-@import "~taro-ui/dist/style/index.scss"; // 引入组件样式 - 方式二
+// @import "~taro-ui/dist/style/index.scss"; // 引入组件样式 - 方式二
 
 
 .at-input{
@@ -8,6 +8,21 @@
 
 .at-tab-bar--fixed{
   opacity: 0.96;
+}
+
+page{
+  color: #10181e;
+  background: #f4f4f4;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button{
+  font-family: inherit;
+}
+
+.safe-bottom{
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 

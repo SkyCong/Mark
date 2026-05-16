@@ -7,7 +7,7 @@
       :autoplay="true"
     >
       <swiper-item v-for="(photo, index) in detailsData.photos" :key="index">
-        <image :src="photo" alt="banner" mode="widthFix" />
+        <image :src="photo" alt="banner" mode="aspectFill" />
       </swiper-item>
     </swiper>
 

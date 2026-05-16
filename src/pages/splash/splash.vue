@@ -9,6 +9,9 @@
       <button class="login" open-type="getUserInfo" @getuserinfo="getUserInfo">
         授权登录
       </button>
+      <button class="login direct_login" @tap="skipLogin">
+        直接登录
+      </button>
     </view>
   </view>
 </template>
@@ -29,7 +32,7 @@ export default defineComponent({
     const getUserInfo = (userInfo) => {
       if (userInfo.detail.userInfo) {
         store.dispatch('counter/setBasicInfo', userInfo.detail.userInfo)
-        Taro.redirectTo({
+        Taro.switchTab({
           url: '/pages/index/index'
         })
       } else {
@@ -37,10 +40,17 @@ export default defineComponent({
       }
     }
 
+    const skipLogin = () => {
+      Taro.switchTab({
+        url: '/pages/index/index'
+      })
+    }
+
     return {
       loginBg,
       logoBg,
-      getUserInfo
+      getUserInfo,
+      skipLogin
     }
   }
 })

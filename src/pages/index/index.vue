@@ -5,8 +5,8 @@
     <setting v-if="current === 2" />
     <tab-bar
       :fixed="true"
-      :font-size="11"
-      :icon-size="22"
+      :font-size="12"
+      :icon-size="24"
       selected-color="#000"
       color="#496069"
       :tab-list="tabList"

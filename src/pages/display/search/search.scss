@@ -1,15 +1,15 @@
 #search_wrap{
   background: #f4f4f4;
-  height: 100vh;
+  min-height: 100vh;
   .search_input{
     width: 100%;
-    height: 96px;
+    height: 104px;
     background: #fff;
     color: #496069;
     position: fixed;
     top: 0;
     z-index: 999;
-    font-size: 20px;
+    font-size: 24px;
     
     .del{
       position:absolute;
@@ -51,19 +51,24 @@
     }
 
     .search_data{
-      padding-top: 100px;
-      overflow: hidden;
+      padding: 116px 20px calc(32px + env(safe-area-inset-bottom));
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
       width: 100%;
       height: 100%;
       .item{
-        float: left;
-        width: 30%;
-        height: 380px;
-        margin: 2.5% 0 0 2.5%;
+        width: 100%;
+        height: auto;
+        min-height: 372px;
+        margin: 0;
         background: #fff;
         color: #496069;
         text-align: center;
         position: relative;
+        border-radius: 8px;
+        overflow: hidden;
         image{
           width: 100%;
           height: 320px;
@@ -83,11 +88,13 @@
         }
         .text{
           width: 100%;
-          padding: 0 6px;
+          padding: 8px 6px 0;
+          box-sizing: border-box;
           overflow:hidden;
           text-overflow:ellipsis;
           white-space:nowrap;
           font-size: 22px;
+          line-height: 1.3;
         }
       }
     }

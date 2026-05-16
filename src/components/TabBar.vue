@@ -13,6 +13,7 @@
         class="at-tab-bar__icon"
         :src="current === index && item.selectedImage ? item.selectedImage : item.image"
         mode="aspectFit"
+        :style="{ width: iconSize + 'px', height: iconSize + 'px' }"
       />
       <view class="at-tab-bar__title" :style="{ fontSize: fontSize + 'px' }">
         {{ item.title }}
@@ -73,9 +74,10 @@ export default defineComponent({
 .at-tab-bar {
   display: flex;
   width: 100%;
-  height: 50px;
+  min-height: 56px;
   background-color: #fff;
   border-top: 1px solid #e5e5e5;
+  box-sizing: border-box;
 
   &--fixed {
     position: fixed;
@@ -83,6 +85,8 @@ export default defineComponent({
     left: 0;
     right: 0;
     z-index: 1000;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   &__item {
@@ -91,7 +95,8 @@ export default defineComponent({
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    min-height: 56px;
+    font-size: 12px;
 
     &--active {
       color: #000;
@@ -105,7 +110,8 @@ export default defineComponent({
   }
 
   &__title {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.2;
   }
 }
 </style>

@@ -7,7 +7,7 @@
       @click="handleMoveClick(item.id)"
     >
       <view class="movie_img">
-        <image :src="item.images.small" :alt="item.title" :lazy-load="true" />
+        <image :src="item.images.small" :alt="item.title" mode="aspectFill" :lazy-load="true" />
       </view>
       <view class="movie_content">
         <view class="title">{{ item.title }}</view>

@@ -1,23 +1,30 @@
 .movie_list_wrap{
   .movie_data{
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding-top: 80px;
-    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
     .item{
-      float: left;
-      width: 30%;
-      height: 380px;
-      margin: 2.5% 0 0 2.5%;
+      width: 100%;
+      min-height: 372px;
+      margin: 0;
       background: #fff;
       color: #496069;
       text-align: center;
+      border-radius: 8px;
+      overflow: hidden;
       image{
         width: 100%;
         height: 320px;
       }
       .text{
         width: 100%;
-        padding: 0 6px;
+        padding: 8px 6px 0;
+        box-sizing: border-box;
         overflow:hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
@@ -48,8 +55,10 @@
     }
     .click{
       width: 96%;
-      height: 96px;
-      line-height: 96px;
+      min-height: 96px;
+      line-height: 1.5;
+      padding: 22px 20px;
+      box-sizing: border-box;
       margin: 5% auto 0;
       background: #ebebeb;
       color: #354b54;

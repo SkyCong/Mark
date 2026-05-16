@@ -1,7 +1,7 @@
 <template>
   <view id="class_display_wrap">
     <view v-for="item in itemData" :key="item.id" class="item">
-      <image :src="item.img_url" :alt="item.name" :lazy-load="true" />
+      <image :src="item.img_url" :alt="item.name" mode="aspectFill" :lazy-load="true" />
       <view class="text">{{ item.name }}</view>
       <view class="tips">
         <image :src="likeIcon" alt="icon" />
