@@ -17,13 +17,19 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onReachBottom } from 'vue'
-import Taro from '@tarojs/taro'
+import { defineComponent, ref, onMounted } from 'vue'
+import Taro, { useReachBottom } from '@tarojs/taro'
 import TabBar from '../../components/TabBar.vue'
-import Discovery from './discovery/discovery.vue'
-import Movie from './movie/movie.vue'
-import Setting from './setting/setting.vue'
+import Discovery from '../../components/HomeDiscovery.vue'
+import Movie from '../../components/HomeMovie.vue'
+import Setting from '../../components/HomeSetting.vue'
 import http from '../../utils/fetch'
+import tabDiscoverUnchecked from '../../assets/tab_discover_unchecked.png'
+import tabDiscoverChecked from '../../assets/tab_discover_checked.png'
+import tabMoviesUnchecked from '../../assets/tab_movies_unchecked.png'
+import tabMoviesChecked from '../../assets/tab_movies_checked.png'
+import tabUsercenterUnchecked from '../../assets/tab_usercenter_unchecked.png'
+import tabUsercenterChecked from '../../assets/tab_usercenter_checked.png'
 import './index.scss'
 
 export default defineComponent({
@@ -42,18 +48,18 @@ export default defineComponent({
     const tabList = [
       { 
         title: '发现',
-        image: '../../assets/tab_discover_unchecked.png',
-        selectedImage: '../../assets/tab_discover_checked.png'
+        image: tabDiscoverUnchecked,
+        selectedImage: tabDiscoverChecked
       },
       { 
         title: '我的电影',
-        image: '../../assets/tab_movies_unchecked.png',
-        selectedImage: '../../assets/tab_movies_checked.png'
+        image: tabMoviesUnchecked,
+        selectedImage: tabMoviesChecked
       },
       { 
         title: '账号',
-        image: '../../assets/tab_usercenter_unchecked.png',
-        selectedImage: '../../assets/tab_usercenter_checked.png'
+        image: tabUsercenterUnchecked,
+        selectedImage: tabUsercenterChecked
       }
     ]
 
@@ -92,12 +98,14 @@ export default defineComponent({
       if (process.env.TARO_ENV === 'weapp') {
         Taro.showShareMenu({
           withShareTicket: true
+        }).catch(() => {
+          console.log('showShareMenu is unavailable in current environment')
         })
       }
       fetchData()
     })
 
-    onReachBottom(() => {
+    useReachBottom(() => {
       if (current.value === 0) {
         page.value = page.value + 1
         fetchData()

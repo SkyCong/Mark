@@ -25,8 +25,8 @@
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import Taro from '@tarojs/taro'
-import aboutLogo from '../../../../assets/about_logo.png'
-import './MovieListUI.scss'
+import aboutLogo from '../assets/about_logo.png'
+import './HomeMovieListUI.scss'
 
 export default defineComponent({
   name: 'MovieListUI',
@@ -58,5 +58,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import './MovieListUI.scss';
+@import './HomeMovieListUI.scss';
 </style>

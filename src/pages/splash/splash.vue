@@ -32,7 +32,7 @@ export default defineComponent({
     const getUserInfo = (userInfo) => {
       if (userInfo.detail.userInfo) {
         store.dispatch('counter/setBasicInfo', userInfo.detail.userInfo)
-        Taro.switchTab({
+        Taro.redirectTo({
           url: '/pages/index/index'
         })
       } else {
@@ -41,7 +41,7 @@ export default defineComponent({
     }
 
     const skipLogin = () => {
-      Taro.switchTab({
+      Taro.redirectTo({
         url: '/pages/index/index'
       })
     }

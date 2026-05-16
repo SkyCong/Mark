@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onReachBottom } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import Taro from '@tarojs/taro'
+import Taro, { useReachBottom } from '@tarojs/taro'
 import http from '../../../utils/fetch'
 import _ from 'lodash'
 import delIcon from '../../../assets/del.png'
@@ -140,7 +140,7 @@ export default defineComponent({
       fetchData()
     })
 
-    onReachBottom(
+    useReachBottom(
       _.debounce(() => {
         page.value = page.value + 1
         fetchData()

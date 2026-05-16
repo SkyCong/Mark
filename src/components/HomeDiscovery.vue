@@ -66,10 +66,10 @@
 <script>
 import { defineComponent, ref, onMounted } from 'vue'
 import Taro from '@tarojs/taro'
-import http from '../../../utils/fetch'
+import http from '../utils/fetch'
 import searchIcon from '@/assets/search_empty_icon.png'
 import likeIcon from '@/assets/daily_card_like_unchecked.png'
-import './discovery.scss'
+import './HomeDiscovery.scss'
 
 export default defineComponent({
   name: 'Discovery',
@@ -149,5 +149,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import './discovery.scss';
+@import './HomeDiscovery.scss';
 </style>
