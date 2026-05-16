@@ -3,14 +3,19 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
-  image{
+  .splash_bg_loop{
     position: absolute;
     left: 0;
     top: 0;
-    height: 100%;
+    height: 200%;
     width: 100%;
-    animation: slideshow 30s ease infinite alternate;
+    animation: slideshow 36s linear infinite;
     z-index: 99;
+  }
+  .splash_bg_img{
+    display: block;
+    width: 100%;
+    height: 50%;
   }
   .logo{
     width: 100%;
@@ -39,6 +44,6 @@
 }
 
 @keyframes slideshow {
-  0%    { top: 0; }
-  100%  { top: -40%; }
+  0%    { transform: translateY(0); }
+  100%  { transform: translateY(-50%); }
 }

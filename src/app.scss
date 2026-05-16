@@ -1,19 +1,21 @@
-// Taro UI Vue3 样式引入
-// @import "~taro-ui-vue3/dist/style/index.scss";
+@import "~taro-ui/dist/style/index.scss"; // 引入组件样式 - 方式二
 
-.at-input {
+
+.at-input{
   margin-left: 0px !important;
   padding-left: 20px;
 }
 
-.at-tab-bar--fixed {
+.at-tab-bar--fixed{
   opacity: 0.96;
 }
 
-.hide {
+
+
+.hide{
   display: none !important;
 }
 
-.show {
+.show{
   display: block !important;
 }

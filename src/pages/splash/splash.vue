@@ -1,6 +1,9 @@
 <template>
   <view class="aplash_wrap">
-    <image :src="loginBg" alt="bg" mode="widthFix" />
+    <view class="splash_bg_loop">
+      <image class="splash_bg_img" :src="loginBg" alt="bg" mode="aspectFill" />
+      <image class="splash_bg_img" :src="loginBg" alt="bg" mode="aspectFill" />
+    </view>
     <view class="logo">
       <image :src="logoBg" alt="logo" />
       <button class="login" open-type="getUserInfo" @getuserinfo="getUserInfo">
