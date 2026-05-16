@@ -5,7 +5,7 @@
       :key="index"
       class="at-rate__item"
       :style="{ fontSize: size + 'px' }"
-      @click="handleClick(index + 1)"
+      @tap="handleClick(index + 1)"
     >
       <text :class="index < value ? 'at-rate__icon--on' : 'at-rate__icon--off'">★</text>
     </view>

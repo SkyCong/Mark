@@ -8,7 +8,7 @@
         :value="val"
         @input="(e) => handleChange(e.detail.value)"
       />
-      <view :class="['del', del ? 'show' : 'hide']" @click="handleClick">
+      <view :class="['del', del ? 'show' : 'hide']" @tap="handleClick">
         <image :src="delIcon" alt="del" />
       </view>
     </view>
@@ -24,10 +24,10 @@
           v-for="item in searchData"
           :key="item.id"
           class="item"
-          @click="handleMoveClick(item.id)"
+          @tap="handleMoveClick(item.id)"
         >
           <image :src="item.images.large" :alt="item.alt" mode="aspectFill" :lazy-load="true" />
-          <view class="like" @click.stop="handleLikeClick(item)">
+          <view class="like" @tap.stop="handleLikeClick(item)">
             {{ id.includes(item.id) ? '✓' : '+' }}
           </view>
           <view class="text">{{ item.title }}</view>

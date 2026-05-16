@@ -1,6 +1,6 @@
 <template>
   <view id="wrap">
-    <view class="search" @click="handleSearch">
+    <view class="search" @tap="handleSearch">
       <view class="search_text">
         <image :src="searchIcon" alt="search" mode="widthFix" />
         搜索
@@ -21,15 +21,15 @@
     </swiper>
 
     <view class="nav">
-      <view class="nav_list" @click="navigateToClass">
+      <view class="nav_list" @tap="navigateToClass">
         <view class="nav_icon"></view>
         <text>分类查找</text>
       </view>
-      <view class="nav_list" @click="navigateToDaycard">
+      <view class="nav_list" @tap="navigateToDaycard">
         <view class="nav_icon">{{ currentDate }}</view>
         <text>每日电影卡片</text>
       </view>
-      <view class="nav_list" @click="navigateToHotmovie">
+      <view class="nav_list" @tap="navigateToHotmovie">
         <view class="nav_icon"></view>
         <text>影院热映</text>
       </view>
@@ -40,7 +40,7 @@
         v-for="item in listData"
         :key="item.pubDate"
         class="findList"
-        @click="navigateToDetails(item.object.id)"
+        @tap="navigateToDetails(item.object.id)"
       >
         <view class="hr"></view>
         <image

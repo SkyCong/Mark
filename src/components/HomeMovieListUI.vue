@@ -12,7 +12,7 @@
         v-for="item in likeState"
         :key="item.id"
         class="item"
-        @click="moveClick(item.id)"
+        @tap="moveClick(item.id)"
       >
         <image :src="item.images.large" :alt="item.alt" mode="aspectFill" />
         <view class="text">{{ item.title }}</view>

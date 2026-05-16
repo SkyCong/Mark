@@ -10,7 +10,7 @@
       selected-color="#000"
       color="#496069"
       :tab-list="tabList"
-      @click="handleClick"
+      @tap="handleClick"
       :current="current"
     />
   </view>

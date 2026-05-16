@@ -6,7 +6,7 @@
       class="at-tab-bar__item"
       :class="{ 'at-tab-bar__item--active': current === index }"
       :style="{ color: current === index ? selectedColor : color }"
-      @click="handleClick(index)"
+      @tap="handleClick(index)"
     >
       <image
         v-if="item.image || item.selectedImage"
@@ -57,10 +57,10 @@ export default defineComponent({
       default: 0
     }
   },
-  emits: ['click'],
+  emits: ['tap'],
   setup(props, { emit }) {
     const handleClick = (index) => {
-      emit('click', index)
+      emit('tap', index)
     }
 
     return {

@@ -9,7 +9,7 @@
         v-for="cat in item.cat"
         :key="cat.id"
         class="navListItem"
-        @click="navigateToClassDisplay"
+        @tap="navigateToClassDisplay"
       >
         {{ cat.name }}
       </view>
